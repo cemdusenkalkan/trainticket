@@ -11,6 +11,8 @@ import NotFoundPage from './pages/NotFoundPage';
 import RegisterPage from './pages/RegisterPage';
 import TrainSearchPage from './pages/TrainSearchPage';
 import TicketResultPage from './pages/TicketResultPage';
+import TicketsList from './pages/TicketsList';
+import PaymentPage from './pages/PaymentPage';
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -48,6 +50,8 @@ const App = () => {
             <Route path="/ticket-inquiry" element={<TrainSearchPage />} />
             <Route path="/ticket-result" element={<TicketResultPage />} />
             <Route path="*" element={<NotFoundPage />} />
+            <Route path="/ticket" element={<TicketsList />} />
+            <Route path="/payment" element={<PaymentPage />} />
           </Routes>
         </main>
       </div>

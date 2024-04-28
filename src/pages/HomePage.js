@@ -8,6 +8,7 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css'; // Import date picker styling
 import { Dropdown } from 'react-bootstrap'; // Assuming you're using React Bootstrap for dropdown
 import 'bootstrap/dist/css/bootstrap.min.css'; // Import Bootstrap CSS
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
 
 const HomePage = () => {
   const [fromStation, setFromStation] = useState('');
@@ -16,6 +17,11 @@ const HomePage = () => {
   const [returnDate, setReturnDate] = useState(null); // Changed to null
   const [selectedOption, setSelectedOption] = useState('one-way');
   const cities = ['Istanbul', 'Izmir', 'Ankara'];
+  const navigate = useNavigate(); // Add this line to get the navigate function
+
+  const handleSearchTickets = () => {
+    navigate('/ticket'); // Navigate to the TicketsList page
+  };
 
   return (
     <div className="home-page">
@@ -88,7 +94,8 @@ const HomePage = () => {
             />
           )}
 
-          <button type="button">Search tickets</button>
+          <button type="button" onClick={handleSearchTickets}>Search tickets</button>
+          
         </div>
       </div>
       <StepsToBookTickets />
