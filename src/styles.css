@@ -219,6 +219,10 @@
   .search-options {
     margin-bottom: 20px;
   }
+
+  .search-options label:first-child {
+    margin-right: 20px; /* Sadece ilk etiketin sağ tarafında 20px boşluk ekler */
+  }
   
   .search-options input[type="radio"] + label {
     padding: 10px 20px;
@@ -238,8 +242,17 @@
   
   
   .search-fields {
-    /* Adjust your search field styles here */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px; /* Adjust the gap as needed */
   }
+  .search-fields > * {
+    flex-shrink: 1;
+  }
+
+
+
   
   .search-fields input,
   .search-fields button {

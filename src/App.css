@@ -42,3 +42,13 @@
   font-size: 24px;
   font-weight: 700;
 }
+
+.nav-links {
+  background-color: #f7f7f7; /* Your current background color */
+  padding: 10px 15px; /* Increase padding to increase the height */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Hafif bir gölge ekler */
+  display: flex; /* This will allow you to align links horizontally */
+  justify-content: center; /* Center the links horizontally */
+  align-items: center; /* Center the links vertically */
+}
+
