@@ -6,7 +6,10 @@ const FAQ = () => {
   const [activeIndex, setActiveIndex] = useState(null);
 
   const questionsAnswers = [
-    { question: 'When can I buy a ticket?', answer: 'Tickets for all domestic trains and trains between Russia and Finland...' },
+    { question: 'When can I buy a ticket?', answer: 'Whenever you want brother.' },
+    { question: 'Cem Düşenkalkan Kimdir', answer: 'Komedinin ta kendisidir' },
+    { question: 'Tren Bileti Gelcek Var mı', answer: 'Ben gelirim ' },
+    { question: 'Nasıl Bilet Alınır?', answer: 'Tarih ve yön seçip çıkan hatlardan satın alabilirsiniz.' },
     // Add other questions and answers here
   ];
 

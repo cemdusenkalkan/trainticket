@@ -3,50 +3,50 @@ import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import './App.css';
 import './styles.css';
 
-// Page components
+// Import your page components
 import HomePage from './pages/HomePage';
 import LoginPage from './pages/LoginPage';
 import ContactPage from './pages/ContactPage';
-import TrainSearchPage from './pages/TrainSearchPage'; // Assuming TrainSearch is a page now
 import NotFoundPage from './pages/NotFoundPage';
+import RegisterPage from './pages/RegisterPage';
+import TrainSearchPage from './pages/TrainSearchPage';
+import TicketResultPage from './pages/TicketResultPage';
 
 const App = () => {
-  const [ticket, setTicket] = useState(null);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  const handleSearch = (ticketData) => {
-    // Implement search functionality or call an API
-  };
-
   const handleLogin = (credentials) => {
-    // Implement login functionality or call an API
-    setIsLoggedIn(true); // You would actually check credentials here before setting loggedIn state
+    // Logic to check the credentials
+    setIsLoggedIn(true);
   };
 
   const handleLogout = () => {
     setIsLoggedIn(false);
-    setTicket(null); // Clear the ticket data on logout
   };
 
   return (
     <Router>
-      <div className="container">
+      <div className="App">
         <header>
+          {/* Navigation links */}
           <nav className="nav-links">
             <Link to="/" className="custom-button">Home</Link>
+            <Link to="/contact" className="custom-button">Contact</Link>
+            {isLoggedIn ? (
+              <button onClick={handleLogout} className="login-button">Logout</button>
+            ) : (
+              <Link to="/login" className="login-button">Login / Register</Link>
+            )}
           </nav>
-          {isLoggedIn ? (
-            <button onClick={handleLogout} className="login-button">Logout</button>
-          ) : (
-            <Link to="/login" className="login-button">Giriş / Kayıt</Link>
-          )}
         </header>
         <main>
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/login" element={<LoginPage onLogin={handleLogin} />} />
             <Route path="/contact" element={<ContactPage />} />
-            <Route path="/ticket-inquiry" element={<TrainSearchPage onSearch={handleSearch} />} />
+            <Route path="/register" element={<RegisterPage />} />
+            <Route path="/ticket-inquiry" element={<TrainSearchPage />} />
+            <Route path="/ticket-result" element={<TicketResultPage />} />
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </main>

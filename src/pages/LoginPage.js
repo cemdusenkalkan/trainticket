@@ -1,41 +1,50 @@
 import React, { useState } from 'react';
+import '../LoginPage.css'; // Make sure to create this CSS file
+import { useNavigate } from 'react-router-dom'; // If you're using react-router
 
-const Login = () => {
-  const [username, setUsername] = useState('');
+const LoginPage = () => {
+  const navigate = useNavigate();
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    // Here you can handle the login logic or integrate API calls
-    console.log('Login submitted:', username, password);
+  const handleLoginSubmit = (e) => {
+    e.preventDefault();
+    // Here you would typically check against your backend for valid credentials
+    if (email && password) { // simple check
+      console.log('Logging in with', email, password);
+      navigate('/'); // Navigate to home on successful login
+    }
+  };
+
+  const handleRegisterRedirect = () => {
+    navigate('/register');
   };
 
   return (
-    <div className="login-container">
+    <div className="form-container">
       <h1>Login</h1>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="username">Username:</label>
-          <input
-            type="text"
-            id="username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-          />
-        </div>
-        <div>
-          <label htmlFor="password">Password:</label>
-          <input
-            type="password"
-            id="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </div>
-        <button type="submit">Log In</button>
+      <form className="form" onSubmit={handleLoginSubmit}>
+        <input
+          type="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          placeholder="Email Address"
+          required
+        />
+        <input
+          type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          placeholder="Password"
+          required
+        />
+        <button type="submit">Login</button>
       </form>
+      <button className="register-redirect" onClick={handleRegisterRedirect}>
+        Register
+      </button>
     </div>
   );
 };
 
-export default Login;
+export default LoginPage;

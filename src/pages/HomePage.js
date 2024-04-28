@@ -4,12 +4,18 @@ import StepsToBookTickets from '../components/StepsToBookTickets';
 import FAQ from '../components/FAQ';
 import backgroundImage from '../trainman.png';
 import '../styles.css';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css'; // Import date picker styling
+import { Dropdown } from 'react-bootstrap'; // Assuming you're using React Bootstrap for dropdown
+import 'bootstrap/dist/css/bootstrap.min.css'; // Import Bootstrap CSS
 
 const HomePage = () => {
   const [fromStation, setFromStation] = useState('');
   const [toStation, setToStation] = useState('');
-  const [departureDate, setDepartureDate] = useState('');
+  const [departureDate, setDepartureDate] = useState(null); // Changed to null
+  const [returnDate, setReturnDate] = useState(null); // Changed to null
   const [selectedOption, setSelectedOption] = useState('one-way');
+  const cities = ['Istanbul', 'Izmir', 'Ankara'];
 
   return (
     <div className="home-page">
@@ -40,24 +46,48 @@ const HomePage = () => {
           </label>
         </div>
         <div className="search-fields">
-          <input 
-            type="text" 
-            placeholder="From" 
-            value={fromStation} 
-            onChange={(e) => setFromStation(e.target.value)}
+          <Dropdown>
+            <Dropdown.Toggle variant="primary" id="dropdown-from">
+              From
+            </Dropdown.Toggle>
+            <Dropdown.Menu>
+              {cities.map((city, index) => (
+                <Dropdown.Item key={index} onClick={() => setFromStation(city)}>
+                  {city}
+                </Dropdown.Item>
+              ))}
+            </Dropdown.Menu>
+          </Dropdown>
+
+          <Dropdown>
+            <Dropdown.Toggle variant="primary" id="dropdown-to">
+              To
+            </Dropdown.Toggle>
+            <Dropdown.Menu>
+              {cities.map((city, index) => (
+                <Dropdown.Item key={index} onClick={() => setToStation(city)}>
+                  {city}
+                </Dropdown.Item>
+              ))}
+            </Dropdown.Menu>
+          </Dropdown>
+
+          <DatePicker
+            selected={departureDate}
+            onChange={(date) => setDepartureDate(date)}
+            placeholderText="Departure Date"
+            className="date-picker"
           />
-          <input 
-            type="text" 
-            placeholder="To" 
-            value={toStation} 
-            onChange={(e) => setToStation(e.target.value)}
-          />
-          <input 
-            type="text" 
-            placeholder="Departure Date" 
-            value={departureDate} 
-            onChange={(e) => setDepartureDate(e.target.value)}
-          />
+
+          {selectedOption === 'roundtrip' && (
+            <DatePicker
+              selected={returnDate}
+              onChange={(date) => setReturnDate(date)}
+              placeholderText="Return Date"
+              className="date-picker"
+            />
+          )}
+
           <button type="button">Search tickets</button>
         </div>
       </div>

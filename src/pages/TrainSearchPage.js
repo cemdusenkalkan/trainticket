@@ -1,18 +1,28 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import '../TrainSearchPage.css';
 
-function TrainSearch({ onSearch }) {
+function TrainSearchPage() {
   const [ticketNumber, setTicketNumber] = useState('');
   const [lastName, setLastName] = useState('');
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSearch({ ticketNumber, lastName });
+    // This is where you'd call the onSearch if you have any API to fetch data from.
+    // Simulating a random ticket for now.
+    const randomTicket = {
+      ticketId: Math.floor(Math.random() * 900000) + 100000,
+      ticketOwner: 'Cem Düşenkalkan',
+      ticketDate: new Date().toLocaleDateString(),
+    };
+    navigate('/ticket-result', { state: randomTicket });
   };
 
   return (
-    <div>
+    <div className="search-container">
       <h2>Train Ticket Search</h2>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="search-form">
         <div>
           <label htmlFor="ticketNumber">Ticket Number:</label>
           <input 
@@ -35,10 +45,10 @@ function TrainSearch({ onSearch }) {
             required 
           />
         </div>
-        <button type="submit">Search</button>
+        <button type="submit" className="search-button">Search</button>
       </form>
     </div>
   );
 }
 
-export default TrainSearch;
+export default TrainSearchPage;
