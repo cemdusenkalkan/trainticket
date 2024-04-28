@@ -36,3 +36,9 @@
     transform: rotate(360deg);
   }
 }
+
+.slogan {
+  font-family: 'Dancing Script', cursive;
+  font-size: 24px;
+  font-weight: 700;
+}

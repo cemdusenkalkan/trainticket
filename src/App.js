@@ -32,11 +32,11 @@ const App = () => {
     <Router>
       <div className="App">
         <header>
-          
+
           <nav className="nav-links">
             <Link to="/" className="custom-button">Home</Link>
             <Link to="/contact" className="custom-button">Contact</Link>
-            <Link to="/ticket-inquiry" className="custom-button">Bilet Sorgulama</Link>
+            <Link to="/ticket-inquiry" className="custom-button">Ticket Inquiry</Link>
             {isLoggedIn ? (
               <button onClick={handleLogout} className="login-button">Logout</button>
             ) : (

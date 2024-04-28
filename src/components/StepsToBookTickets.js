@@ -9,18 +9,18 @@ const StepsToBookTickets = () => {
     <div className="steps-container">
       <div className="step">
         <img src={IconSelectRoute} alt="Select Route" />
-        <h3>Rota Seç</h3>
-        <p>Yolculuk yapmak istediğiniz hatlar arasında seçim yapın.</p>
+        <h3>Select Route</h3>
+        <p>Choose among the routes you want to travel on.</p>
       </div>
       <div className="step">
         <img src={IconBuyTickets} alt="Buy Tickets" />
-        <h3>Bilet Satın Al</h3>
-        <p>Bilet satın alma sayfasına gidin ve biletinizi alın.</p>
+        <h3>Buy Ticket</h3>
+        <p>Go to the ticket purchase page and buy your ticket.</p>
       </div>
       <div className="step">
         <img src={IconCheckTickets} alt="Check Tickets" />
-        <h3>Biletinizi Kontrol Edin</h3>
-        <p>Size verilen PNR numarası ile biletinizi sorgulayın. İyi Yolculuklar!</p>
+        <h3>Check Your Ticket</h3>
+        <p>Query your ticket with the PNR number given to you. Have a good trip!</p>
       </div>
     </div>
   );

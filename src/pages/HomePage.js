@@ -24,9 +24,16 @@ const HomePage = () => {
 
   return (
     <div className="home-page">
-      <div className="search-container" style={{ backgroundImage: `url(${backgroundImage})` }}>
+      <div
+        className="search-container"
+        style={{
+        backgroundImage: `url(${backgroundImage})`,
+        backgroundSize: 'cover',
+        backgroundRepeat: 'no-repeat'
+        }}>
+
         <h2>traintrack</h2>
-        <h3>Geliyom?</h3>
+        <h3 className='slogan'>Ride the Rails to Adventure - Your Journey Begins Here!</h3>
         <div className="search-options">
           <label>
             <input 
@@ -92,7 +99,7 @@ const HomePage = () => {
             />
           )}
 
-          <button type="button" onClick={handleSearchTickets}>Search tickets</button>
+          <button type="button" onClick={handleSearchTickets}>Search</button>
           
         </div>
       </div>

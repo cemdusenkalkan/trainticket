@@ -21,7 +21,7 @@ function TrainSearchPage() {
 
   return (
     <div className="search-container">
-      <h2>Train Ticket Search</h2>
+      <h2>Ticket Inquiry</h2>
       <form onSubmit={handleSubmit} className="search-form">
         <div>
           <label htmlFor="ticketNumber">Ticket Number:</label>
