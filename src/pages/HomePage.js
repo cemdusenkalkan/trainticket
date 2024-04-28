@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import NavigationBar from '../components/NavigationBar';
 import StepsToBookTickets from '../components/StepsToBookTickets';
 import FAQ from '../components/FAQ';
 import backgroundImage from '../trainman.png';
@@ -25,9 +24,8 @@ const HomePage = () => {
 
   return (
     <div className="home-page">
-      <NavigationBar />
       <div className="search-container" style={{ backgroundImage: `url(${backgroundImage})` }}>
-        <h2>Bilet Al?</h2>
+        <h2>traintrack</h2>
         <h3>Geliyom?</h3>
         <div className="search-options">
           <label>
@@ -100,7 +98,6 @@ const HomePage = () => {
       </div>
       <StepsToBookTickets />
       <FAQ />
-      {/* Other components or content */}
     </div>
   );
 };

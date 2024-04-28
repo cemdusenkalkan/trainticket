@@ -14,6 +14,8 @@ import TicketResultPage from './pages/TicketResultPage';
 import TicketsList from './pages/TicketsList';
 import PaymentPage from './pages/PaymentPage';
 
+
+
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
@@ -30,10 +32,11 @@ const App = () => {
     <Router>
       <div className="App">
         <header>
-          {/* Navigation links */}
+          
           <nav className="nav-links">
             <Link to="/" className="custom-button">Home</Link>
             <Link to="/contact" className="custom-button">Contact</Link>
+            <Link to="/ticket-inquiry" className="custom-button">Bilet Sorgulama</Link>
             {isLoggedIn ? (
               <button onClick={handleLogout} className="login-button">Logout</button>
             ) : (
