@@ -25,6 +25,7 @@ const PaymentPage = () => {
 
   return (
     <div className="payment-container">
+      <h1>Payment</h1>      
       <form onSubmit={handleSubmit} className="payment-form">
         <input
           name="cardNumber"

@@ -1,24 +1,32 @@
-// TicketsList.js
-import React from 'react';
+import React, { useState } from 'react'; // Importing useState
 import { useNavigate } from 'react-router-dom';
-import '../TicketsList.css'; // Make sure this CSS file exists and is imported
+import '../TicketsList.css';
 
 const TicketsList = () => {
   const navigate = useNavigate();
 
-  const handleBuyClick = () => {
-    navigate('/payment'); // Assuming '/payment' is the route for the PaymentPage
-  };
+  // Creating ticket state and initial values with useState
+  const [tickets, setTickets] = useState([
+    { id: 1, from: 'Fatih', to: 'Beylikdüzü', departure: '08:00', arrival: '10:00' },
+    { id: 2, from: 'Bakırköy', to: 'Kadıköy', departure: '09:00', arrival: '10:30' },
+    { id: 3, from: 'Üsküdar', to: 'Taksim', departure: '09:30', arrival: '10:45' },
+    { id: 4, from: 'Beşiktaş', to: 'Sarıyer', departure: '10:00', arrival: '11:00' },
+  ]);
 
-  const tickets = [1, 2, 3, 4]; // Placeholder for ticket IDs
+  // Function to navigate for ticket purchase
+  const handleBuyClick = () => {
+    navigate(`/payment`); // Using the dynamic route '/payment/:id' to navigate to the payment page
+  };
 
   return (
     <div className="tickets-container">
-      {/* Render your tickets here */}
-      {tickets.map((ticketId) => (
-        <div key={ticketId} className="ticket">
-          <h3>Ticket {ticketId}</h3>
-          <button onClick={() => handleBuyClick(ticketId)}>Buy</button>
+      {tickets.map((ticket) => (
+        <div key={ticket.id} className="ticket">
+          <div>Departure Point: {ticket.from}</div>
+          <div>Destination: {ticket.to}</div>
+          <div>Departure Time: {ticket.departure}</div>
+          <div>Arrival Time: {ticket.arrival}</div>
+          <button onClick={() => handleBuyClick()}>Buy</button>
         </div>
       ))}
     </div>
