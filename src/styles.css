@@ -1,0 +1,195 @@
+/* Style for buttons */
+.custom-button {
+    background-color: #4e8bf5; /* Light blue color */
+    color: #fff; /* White text */
+    border: none; /* No border */
+    padding: 10px 15px; /* Padding around the text */
+    font-size: 14px; /* Font size */
+    cursor: pointer; /* Cursor style */
+    border-radius: 5px; /* Rounded corners */
+    margin-right: 10px; /* Margin between buttons */
+    transition: background-color 0.3s ease; /* Smooth transition for background color */
+}
+
+/* Hover effect */
+.custom-button:hover {
+    background-color: #6fa2ff; /* Lighter blue color on hover */
+}
+
+/* Navigation links */
+.nav-links {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.nav-links a {
+    color: #444; /* Gray color */
+    text-decoration: none; /* Remove underline */
+    padding: 10px 15px; /* Padding around the text */
+    font-size: 14px; /* Font size */
+    margin-right: 10px; /* Margin between links */
+    transition: color 0.3s ease; /* Smooth transition for text color */
+}
+
+.nav-links a:hover {
+    color: #333; /* Darker gray color on hover */
+}
+
+/* Additional CSS for login button */
+.login-button {
+    background-color: #6c757d; /* Gray color */
+    color: #fff; /* White text */
+    border: none; /* No border */
+    padding: 10px 15px; /* Padding around the text */
+    font-size: 14px; /* Font size */
+    cursor: pointer; /* Cursor style */
+    border-radius: 5px; /* Rounded corners */
+    transition: background-color 0.3s ease; /* Smooth transition for background color */
+}
+
+.login-button:hover {
+    background-color: #4e8bf5; /* Light blue color on hover */
+}
+
+/* Additional CSS for register button */
+.register-button {
+    background-color: #7ea3cb; /* Blue color */
+    color: #fff; /* White text */
+    border: none; /* No border */
+    padding: 10px 15px; /* Padding around the text */
+    font-size: 14px; /* Font size */
+    cursor: pointer; /* Cursor style */
+    border-radius: 5px; /* Rounded corners */
+    transition: background-color 0.3s ease; /* Smooth transition for background color */
+}
+
+.register-button:hover {
+    background-color: #4e8bf5; /* Light blue color on hover */
+}
+
+/* Style for travel options section */
+.travel-options {
+    margin-top: 20px; /* Add margin at the top */
+    display: flex; /* Use flexbox to align items */
+    justify-content: space-between; /* Space out items */
+}
+
+/* Style for each option */
+.option {
+    flex: 1; /* Each option will take up equal space */
+}
+
+.option-heading {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* Style for selected option button */
+.selected-option {
+    background-color: #4e8bf5; /* Light blue color */
+    color: #fff; /* White text */
+    border: none; /* No border */
+    padding: 10px 20px; /* Padding around the text */
+    font-size: 16px; /* Font size */
+    cursor: pointer; /* Cursor style */
+    border-radius: 5px; /* Rounded corners */
+    margin-right: 10px; /* Margin between buttons */
+}
+
+.selected-option:hover {
+    background-color: #6fa2ff; /* Lighter blue color on hover */
+}
+
+.location-button:hover {
+    background-color: #6fa2ff; /* Lighter blue color on hover */
+}
+
+/* Additional CSS for way selector */
+.way-selector {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px; /* Add margin to separate from other options */
+}
+
+.selected-dot + .dot-label {
+    font-weight: bold; /* Make label of selected dot bold */
+}
+
+.dot-label {
+    position: absolute;
+    top: -25px; /* Position label above the dot */
+    font-size: 14px; /* Font size of label */
+    color: #fff; /* Color of label */
+}
+
+.way-selector {
+    position: relative; /* Positioning context for the labels */
+}
+
+.dot {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #ccc; /* Default color for unselected dot */
+    margin: 0 5px; /* Margin between dots */
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Smooth transition for background color */
+}
+
+.selected-dot {
+    background-color: #4e8bf5; /* Light blue color for selected dot */
+}
+
+.dot-label {
+    margin-top: 5px; /* Add margin between the dot and label */
+    text-align: center; /* Center align the label */
+    font-size: 14px; /* Adjust font size */
+    color: #333; /* Text color */
+}
+
+.button-container {
+    display: flex;
+    animation: fadeInUp 0.5s ease; /* Apply animation to button container */
+    justify-content: flex-start;
+    flex-grow: 1;
+}
+
+@keyframes fadeInUp {
+    from {
+    opacity: 0;
+    transform: translateY(20px);
+    }
+    to {
+    opacity: 1;
+    transform: translateY(0);
+    }
+}
+
+.location-select {
+    padding: 12px; /* Padding around the select dropdown */
+    font-size: 16px; /* Font size */
+    border: 1px solid #ccc; /* Border */
+    border-radius: 5px; /* Rounded corners */
+    background-color: #f8f9fa; /* Background color */
+    width: 100%; /* Full width */
+    appearance: none; /* Remove default arrow */
+    cursor: pointer; /* Cursor style */
+    transition: border-color 0.3s ease; /* Smooth transition for border color */
+}
+
+.location-select:hover,
+.location-select:focus {
+    border-color: #4e8bf5; /* Border color on hover/focus */
+    outline: none; /* Remove default outline */
+}
+
+.person-count-input {
+    padding: 12px; /* Same padding as location-select */
+    font-size: 16px; /* Same font size as location-select */
+    border: 1px solid #ccc; /* Same border style as location-select */
+    border-radius: 5px; /* Same border-radius as location-select */
+    width: 100%; /* Same width as location-select */
+    box-sizing: border-box; /* Make sure padding is included in the width */
+}
