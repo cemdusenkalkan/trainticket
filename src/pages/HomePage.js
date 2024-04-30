@@ -57,31 +57,32 @@ const HomePage = () => {
           </label>
         </div>
         <div className="search-fields">
-          <Dropdown>
-            <Dropdown.Toggle variant="primary" id="dropdown-from">
-              From
-            </Dropdown.Toggle>
-            <Dropdown.Menu>
-              {cities.map((city, index) => (
-                <Dropdown.Item key={index} onClick={() => setFromStation(city)}>
-                  {city}
-                </Dropdown.Item>
-              ))}
-            </Dropdown.Menu>
-          </Dropdown>
+      <Dropdown>
+        <Dropdown.Toggle variant="primary" id="dropdown-from">
+          {fromStation || 'From'}
+        </Dropdown.Toggle>
+        <Dropdown.Menu>
+          {cities.map((city, index) => (
+            <Dropdown.Item key={index} onClick={() => setFromStation(city)}>
+              {city}
+            </Dropdown.Item>
+          ))}
+        </Dropdown.Menu>
+      </Dropdown>
 
-          <Dropdown>
-            <Dropdown.Toggle variant="primary" id="dropdown-to">
-              To
-            </Dropdown.Toggle>
-            <Dropdown.Menu>
-              {cities.map((city, index) => (
-                <Dropdown.Item key={index} onClick={() => setToStation(city)}>
-                  {city}
-                </Dropdown.Item>
-              ))}
-            </Dropdown.Menu>
-          </Dropdown>
+      <Dropdown>
+        <Dropdown.Toggle variant="primary" id="dropdown-to">
+          {toStation || 'To'}
+        </Dropdown.Toggle>
+        <Dropdown.Menu>
+          {cities.map((city, index) => (
+            <Dropdown.Item key={index} onClick={() => setToStation(city)}>
+              {city}
+            </Dropdown.Item>
+          ))}
+        </Dropdown.Menu>
+      </Dropdown>
+    
 
           <DatePicker
             selected={departureDate}
