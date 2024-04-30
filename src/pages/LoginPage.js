@@ -6,13 +6,28 @@ const LoginPage = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+
+  // Hard-coded user credentials for demonstration purposes
+  const validUsers = [
+    { id: 1, name: 'John Doe', email: 'john@example.com', password: 'password123', role: 'admin' },
+    { id: 2, name: 'Jane Doe', email: 'jane@example.com', password: 'password456', role: 'user' }
+  ];
 
   const handleLoginSubmit = (e) => {
     e.preventDefault();
-    // Here you would typically check against your backend for valid credentials
-    if (email && password) { // simple check
-      console.log('Logging in with', email, password);
-      navigate('/'); // Navigate to home on successful login
+    const user = validUsers.find(u => u.email === email && u.password === password);
+
+    if (user) {
+      console.log('Logging in with', email, 'Role:', user.role); // For debugging purposes
+      // Redirect based on role
+      if (user.role === 'admin') {
+        navigate('/admin-dashboard'); // Navigate to admin dashboard for admin users
+      } else {
+        navigate('/'); // Navigate to home for regular users
+      }
+    } else {
+      setError('Invalid email or password');
     }
   };
 
@@ -24,6 +39,8 @@ const LoginPage = () => {
     <div className="form-container">
       <h1>Login</h1>
       <form className="form" onSubmit={handleLoginSubmit}>
+        {error && <div className="error-message">{error}</div>} {/* Display error message if any */}
+
         <input
           type="email"
           value={email}
@@ -39,6 +56,7 @@ const LoginPage = () => {
           required
         />
         <button type="submit">Login</button>
+        
       </form>
       <button className="register-redirect" onClick={handleRegisterRedirect}>
         Register

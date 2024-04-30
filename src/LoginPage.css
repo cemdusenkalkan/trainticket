@@ -56,6 +56,7 @@
   .register-redirect {
     margin-top: 20px;
     background-color: #f8f9fa;
+    box-shadow: 1px 1px 1px 1px #888888;
     color: #333;
     padding: 10px 15px;
     border: none;
@@ -80,3 +81,15 @@
     }
   }
   
+
+    /* Hata mesajı için stil */
+    .error-message {
+      color: #D8000C; /* Kırmızı tonu, hata mesajları için genellikle kullanılan bir renktir */
+      background-color: #FFD2D2; /* Açık kırmızı arkaplan */
+      border: 1px solid #D8000C;
+      padding: 10px;
+      margin-bottom: 10px; /* Formun üzerindeki boşluğu ayarlar */
+      text-align: center; /* Metni ortalar */
+      border-radius: 5px; /* Kenarları yuvarlatır */
+      font-size: 0.9em; /* Yazı tipi boyutunu ayarlar */
+    }
