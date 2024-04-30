@@ -12,6 +12,7 @@ import TrainSearchPage from './pages/TrainSearchPage';
 import TicketResultPage from './pages/TicketResultPage';
 import TicketsList from './pages/TicketsList';
 import PaymentPage from './pages/PaymentPage';
+import AdminPanelPage from './pages/AdminPanelPage';
 
 // Sohbet paneli ve buton bileşeni
 const ChatSupport = () => {
@@ -99,6 +100,7 @@ const App = () => {
             <Route path="*" element={<NotFoundPage />} />
             <Route path="/ticket" element={<TicketsList />} />
             <Route path="/payment" element={<PaymentPage />} />
+            <Route path="/admin-dashboard" element={<AdminPanelPage />} />
           </Routes>
           <ChatSupport /> {/* Sohbet bileşeni burada eklendi */}
         </main>
