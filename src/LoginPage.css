@@ -93,3 +93,18 @@
       border-radius: 5px; /* Kenarları yuvarlatır */
       font-size: 0.9em; /* Yazı tipi boyutunu ayarlar */
     }
+
+
+
+    .register-link {
+      color: #007bff; /* Link rengi */
+      text-decoration: none; /* Alt çizgiyi kaldır */
+      margin-top: 15px; /* Üstten boşluk */
+      display: block; /* Yeni satıra başlaması için */
+      cursor: pointer; /* Fare imleci link şeklinde olsun */
+    }
+    
+    .register-link:hover {
+      text-decoration: underline; /* Üzerine gelindiğinde altını çiz */
+    }
+    

@@ -56,11 +56,12 @@ const LoginPage = () => {
           required
         />
         <button type="submit">Login</button>
+
+        <a href="" onClick={handleRegisterRedirect} className="register-link">Don't have an account yet?  Sign Up</a>
+
         
       </form>
-      <button className="register-redirect" onClick={handleRegisterRedirect}>
-        Register
-      </button>
+      
     </div>
   );
 };
