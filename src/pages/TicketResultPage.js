@@ -1,6 +1,7 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
-import '../Ticket.css'; // Make sure to create and import this CSS file
+import '../Ticket.css';
+import ticketImage from '../img/ticket.png';
 
 function TicketResultPage() {
   const location = useLocation();
@@ -10,7 +11,7 @@ function TicketResultPage() {
     <div className="ticket-container">
       <div className="ticket">
         <div className="ticket-logo">
-          {/* Your SVG logo goes here */}
+          <img src={ticketImage} alt="Ticket" />
         </div>
         <div className="ticket-info">
           <p>Ticket ID: {ticketId}</p>
