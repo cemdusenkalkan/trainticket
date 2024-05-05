@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+// import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, NavLink } from 'react-router-dom';
+
+
 import './App.css';
 import './styles.css';
 // Import your page components
@@ -13,6 +16,10 @@ import TicketResultPage from './pages/TicketResultPage';
 import TicketsList from './pages/TicketsList';
 import PaymentPage from './pages/PaymentPage';
 import AdminPanelPage from './pages/AdminPanelPage';
+
+import logoImage from './img/logo.png';
+
+
 
 // Sohbet paneli ve buton bileşeni
 const ChatSupport = () => {
@@ -77,15 +84,17 @@ const App = () => {
   return (
     <Router>
       <div className="App">
-        <header>
+      <header>
           <nav className="nav-links">
-            <Link to="/" className="custom-button">Home</Link>
-            <Link to="/contact" className="custom-button">Contact</Link>
-            <Link to="/ticket-inquiry" className="custom-button">Ticket Inquiry</Link>
+            <img src={logoImage} alt="logo" />
+            <NavLink to="/" className="custom-button" activeClassName="active">Home</NavLink>
+            <NavLink to="/contact" className="custom-button" activeClassName="active">Contact</NavLink>
+            <NavLink to="/ticket-inquiry" className="custom-button" activeClassName="active">Ticket Inquiry</NavLink>
+            
             {isLoggedIn ? (
               <button onClick={handleLogout} className="login-button">Logout</button>
             ) : (
-              <Link to="/login" className="login-button">Login / Register</Link>
+              <NavLink to="/login" className="login-button" activeClassName="active">Login</NavLink>
             )}
           </nav>
         </header>

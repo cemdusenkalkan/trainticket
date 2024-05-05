@@ -24,7 +24,7 @@ const ContactPage = () => {
             <p>+90 538 543 86 10</p>
           </div>
           <div className="info-item">
-            <img src={mailImage} alt="Phone" />
+            <img src={mailImage} alt="Mail" />
             <p>info@tarintrack.com</p>
           </div>
         </div>

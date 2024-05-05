@@ -43,15 +43,45 @@
   font-weight: 700;
 }
 
+
+/* navbar */
 .nav-links {
-  background-color: #f7f7f7; /* Your current background color */
-  padding: 10px 15px; /* Increase padding to increase the height */
+  background-color: #f7f7f7; /* Mevcut arkaplan renginiz */
+  padding: 10px 15px; /* Yüksekliği artırmak için dolguyu artırın */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Hafif bir gölge ekler */
-  display: flex; /* This will allow you to align links horizontally */
-  justify-content: center; /* Center the links horizontally */
-  align-items: center; /* Center the links vertically */
+  display: flex; /* Bu, bağlantıları yatay olarak hizalamanızı sağlar */
+  justify-content: space-between; /* Bağlantıları yatay olarak ayır */
+  align-items: center; /* Bağlantıları dikey olarak merkezle */
 }
 
+.nav-links > img {
+  height: 80px; /* Logonun yüksekliğini ayarlayabilirsiniz */
+  margin-right: auto; /* Logo hariç diğer öğeleri sağa itmek için */
+}
+
+
+.custom-button, .login-button {
+  background-color: transparent; /* Buton arka planını şeffaf yap */
+  color: #007bff; /* Metin rengi */
+  border: none; /* Kenarlıkları kaldır */
+  padding: 10px 15px; /* Yeterli dolgu */
+  font-size: 16px; /* Metin boyutu */
+  text-transform: uppercase; /* Metni büyük harfe çevir */
+  letter-spacing: 1px; /* Harf aralığını genişlet */
+  cursor: pointer; /* Fare imlecini düğme olarak değiştir */
+  transition: color 0.3s; /* Geçiş efekti */
+}
+
+.custom-button:hover, .login-button:hover {
+  color: #0056b3; /* Hover rengi */
+}
+
+/* Eğer ekstra stil isterseniz, aktif ve odaklanma durumları için de stil ekleyebilirsiniz */
+.custom-button:focus, .login-button:focus,
+.custom-button:active, .login-button:active {
+  outline: none; /* Odaklanma çerçevesini kaldır */
+  box-shadow: none; /* Gölgeyi kaldır */
+}
 
 
 
@@ -124,4 +154,22 @@
   background-color: #f1f1f1;
   color: black;
   align-self: flex-start; /* Bot mesajlarını sola yasla */
+}
+
+
+
+.nav-links a {
+  color: #007bff; /* Normal link rengi */
+  text-decoration: none; /* Alt çizgiyi kaldır */
+  padding: 10px 15px;
+  transition: color 0.3s; /* Renk değişimi için geçiş efekti */
+}
+
+.nav-links a:hover, .nav-links a.active {
+  color: #0056b3; /* Hover ve aktif link rengi */
+  border-bottom: 2px solid #0056b3; /* Alt çizgi */
+}
+
+.nav-links a.active {
+  font-weight: bold; /* Aktif link için kalın yazı tipi */
 }
