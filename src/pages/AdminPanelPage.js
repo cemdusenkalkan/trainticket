@@ -1,49 +1,38 @@
-import React, { useState, useEffect } from 'react';
-
-// Basit bir kullanıcı listesi örneği
-const initialUsers = [
-  { id: 1, name: 'John Doe', email: 'john@example.com', role: 'admin' },
-  { id: 2, name: 'Jane Smith', email: 'jane@example.com', role: 'user' },
-  { id: 3, name: 'Emma Brown', email: 'emma@example.com', role: 'user' }
-];
+import React, { useState } from 'react';
+import '../admin.css';
+import AdminUserManagement from '../components/AdminUserManagement';
+// TicketManager ve TrainManager bileşenlerini içe aktar
+import TicketManager from '../components/TicketManager';
+import TrainManager from '../components/TrainManager';
 
 const AdminPanelPage = () => {
-  const [users, setUsers] = useState(initialUsers);
+  const [selectedPage, setSelectedPage] = useState('adminUserManagement'); // Başlangıçta AdminUserManagement sayfasını göster
 
-  // Kullanıcı silme fonksiyonu
-  const handleDeleteUser = (userId) => {
-    setUsers(users.filter(user => user.id !== userId));
+  // Sayfa seçimine göre ilgili bileşeni render etmek için yardımcı bir fonksiyon
+  const renderSelectedPage = () => {
+    switch (selectedPage) {
+      case 'adminUserManagement':
+        return <AdminUserManagement />;
+      case 'ticketManager':
+        return <TicketManager />;
+      case 'trainManager':
+        return <TrainManager />;
+      default:
+        return null;
+    }
   };
 
-  // Basit kullanıcı listesi gösterimi
   return (
     <div className="admin-dashboard">
       <h1>Admin Dashboard</h1>
-      <h2>User Management</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Role</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {users.map((user) => (
-            <tr key={user.id}>
-              <td>{user.id}</td>
-              <td>{user.name}</td>
-              <td>{user.email}</td>
-              <td>{user.role}</td>
-              <td>
-                <button onClick={() => handleDeleteUser(user.id)}>Delete</button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+      {/* Yönetim sayfası seçimini sağlayan bir menü */}
+      <div className="admin-navigation">
+        <button onClick={() => setSelectedPage('adminUserManagement')}>User Management</button>
+        <button onClick={() => setSelectedPage('ticketManager')}>Ticket Manager</button>
+        <button onClick={() => setSelectedPage('trainManager')}>Train Manager</button>
+      </div>
+      {/* Seçilen sayfayı render etmek için renderSelectedPage fonksiyonunu kullan */}
+      {renderSelectedPage()}
     </div>
   );
 };
