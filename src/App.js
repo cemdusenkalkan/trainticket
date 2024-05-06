@@ -11,6 +11,7 @@ import TrainSearchPage from './pages/TrainSearchPage';
 import TicketResultPage from './pages/TicketResultPage';
 import TicketsList from './pages/TicketsList';
 import PaymentPage from './pages/PaymentPage';
+import SelectSeatPage from './pages/SelectSeatPage';
 import AdminPanelPage from './pages/AdminPanelPage';
 import ChatSupport from './components/ChatSupport'; // Make sure the path matches where you placed the file
 
@@ -55,6 +56,7 @@ const App = () => {
             <Route path="/ticket" element={<TicketsList />} />
             <Route path="/payment" element={<PaymentPage />} />
             <Route path="/admin-dashboard" element={<AdminPanelPage />} />
+            <Route path="/SelectSeatPage" element={<SelectSeatPage />} />
           </Routes>
           <ChatSupport /> {/* Sohbet bileşeni burada eklendi */}
         </main>

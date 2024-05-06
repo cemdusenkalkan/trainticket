@@ -1,0 +1,40 @@
+.train-car {
+    border: 3px solid #333;
+    border-radius: 15px;
+    background-color: #f1f1f1;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    margin: auto;
+    margin-top: 20px;
+    margin: 100px;
+  }
+  
+  .train-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 550px; /* Genişlik, koltukların düzenli bir şekilde dizilmesini sağlar */
+  }
+  
+  .seat {
+    width: 50px;
+    height: 50px;
+    background-color: #f9f9f9;
+    border: 2px solid #ccc;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+    margin: 5px;
+  }
+  
+  .seat:hover {
+    background-color: #e2e2e2;
+  }
+  
+  .seat.occupied {
+    background-color: #ff6347;
+    cursor: not-allowed;
+  }
+  
