@@ -1,22 +1,22 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import '../admin.css';
 
-// Basit bir kullanıcı listesi örneği
 const initialUsers = [
-  { id: 1, name: 'John Doe', email: 'john@example.com', role: 'admin' },
-  { id: 2, name: 'Jane Smith', email: 'jane@example.com', role: 'user' },
-  { id: 3, name: 'Emma Brown', email: 'emma@example.com', role: 'user' }
+  { id: 1, name: 'Admin', email: 'admin@example.com', role: 'admin' },
+  { id: 2, name: 'Miray Köksal', email: 'miray@example.com', role: 'user' },
+  { id: 3, name: 'Cem Kalkandüşen', email: 'cem@example.com', role: 'user' },
+  { id: 4, name: 'Meryem Çanga', email: 'meryem@example.com', role: 'user' }
 ];
 
 const AdminUserManagement = () => {
   const [users, setUsers] = useState(initialUsers);
 
-  // Kullanıcı silme fonksiyonu
+  // Geçici olarak kullancı silmek için
   const handleDeleteUser = (userId) => {
     setUsers(users.filter(user => user.id !== userId));
   };
 
-  // Basit kullanıcı listesi gösterimi
+  
   return (
     <div className="user-management">
       <h2>User Management</h2>
