@@ -13,7 +13,7 @@ import TicketsList from './pages/TicketsList';
 import PaymentPage from './pages/PaymentPage';
 import SelectSeatPage from './pages/SelectSeatPage';
 import AdminPanelPage from './pages/AdminPanelPage';
-import ChatSupport from './components/ChatSupport'; // Make sure the path matches where you placed the file
+import ChatSupport from './components/ChatSupport';
 
 import logoImage from './img/logo.png';
 
@@ -58,7 +58,7 @@ const App = () => {
             <Route path="/admin-dashboard" element={<AdminPanelPage />} />
             <Route path="/SelectSeatPage" element={<SelectSeatPage />} />
           </Routes>
-          <ChatSupport /> {/* Sohbet bileşeni burada eklendi */}
+          <ChatSupport /> {}
         </main>
       </div>
     </Router>
