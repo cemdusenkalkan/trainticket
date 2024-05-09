@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import '../admin.css';
 
 const initialUsers = [
-  { id: 1, name: 'Admin', email: 'admin@example.com', role: 'admin' },
-  { id: 2, name: 'Miray Köksal', email: 'miray@example.com', role: 'user' },
-  { id: 3, name: 'Cem Kalkandüşen', email: 'cem@example.com', role: 'user' },
-  { id: 4, name: 'Meryem Çanga', email: 'meryem@example.com', role: 'user' }
+  { id: 1, name: 'Admin', email: 'admin@gmail.com', role: 'admin' },
+  { id: 2, name: 'Miray Köksal', email: 'miray@gmail.com', role: 'user' },
+  { id: 3, name: 'Cem Kalkandüşen', email: 'cem@gmail.com', role: 'user' },
+  { id: 4, name: 'Meryem Çanga', email: 'meryem@gmail.com', role: 'user' }
 ];
 
 const AdminUserManagement = () => {

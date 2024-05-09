@@ -6,7 +6,7 @@ const ChatSupport = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState([{ text: "Hello, how can I assist you?", sender: "bot" }]);
   const [newMessage, setNewMessage] = useState('');
-  const chatRef = useRef(null); // Ref for the chat panel
+  const chatRef = useRef(null);
 
   const handleSendMessage = () => {
     if (newMessage.trim() !== "") {
@@ -15,7 +15,6 @@ const ChatSupport = () => {
     }
   };
 
-  // Function to handle outside click
   const handleClickOutside = (event) => {
     if (chatRef.current && !chatRef.current.contains(event.target) && isOpen) {
       setIsOpen(false);
@@ -33,7 +32,7 @@ const ChatSupport = () => {
     if (messages.length && messages[messages.length - 1].sender === "user") {
       setTimeout(() => {
         setMessages(msgs => [...msgs, { text: "Chat support development in progress.", sender: "bot" }]);
-      }, 100); // Add bot response 1 second after user message
+      }, 100);
     }
   }, [messages]);
 

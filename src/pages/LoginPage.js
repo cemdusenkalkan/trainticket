@@ -8,10 +8,11 @@ const LoginPage = () => {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
 
-  // Hard-coded user credentials for demonstration purposes
   const validUsers = [
-    { id: 1, name: 'John Doe', email: 'john@example.com', password: 'password123', role: 'admin' },
-    { id: 2, name: 'Jane Doe', email: 'jane@example.com', password: 'password456', role: 'user' }
+    { id: 1, name: 'Admin', email: 'admin@gmail.com', password: 'password', role: 'admin' },
+    { id: 2, name: 'Miray Köksal', email: 'miray@gmail.com', password: 'password', role: 'user' },
+    { id: 3, name: 'Cem Kalkandüşen', email: 'cem@gmail.com', password: 'password', role: 'user' },
+    { id: 4, name: 'Meryem Çanga', email: 'meryem@gmail.com', password: 'password', role: 'user' }
   ];
 
   const handleLoginSubmit = (e) => {
@@ -19,12 +20,11 @@ const LoginPage = () => {
     const user = validUsers.find(u => u.email === email && u.password === password);
 
     if (user) {
-      console.log('Logging in with', email, 'Role:', user.role); // For debugging purposes
-      // Redirect based on role
+      console.log('Logging in with', email, 'Role:', user.role);
       if (user.role === 'admin') {
-        navigate('/admin-dashboard'); // Navigate to admin dashboard for admin users
+        navigate('/admin-dashboard');
       } else {
-        navigate('/'); // Navigate to home for regular users
+        navigate('/');
       }
     } else {
       setError('Invalid email or password');
@@ -39,7 +39,7 @@ const LoginPage = () => {
     <div className="form-container">
       <h1>Login</h1>
       <form className="form" onSubmit={handleLoginSubmit}>
-        {error && <div className="error-message">{error}</div>} {/* Display error message if any */}
+        {error && <div className="error-message">{error}</div>}
 
         <input
           type="email"

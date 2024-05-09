@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import '../RegisterPage.css'; // Reuse the LoginPage.css or create a new one with the same content
+import '../RegisterPage.css';
 import { useNavigate } from 'react-router-dom'; 
 
 const RegisterPage = () => {
@@ -11,13 +11,15 @@ const RegisterPage = () => {
 
   const handleRegisterSubmit = (e) => {
     e.preventDefault();
-    // Implement your register logic here
     console.log('Registering with', email, password);
-    // Handle password confirmation and other validation here
   };
 
   const handleLoginRedirect = () => {
     navigate('/login');
+  };
+
+  const handleHomeRedirect = () => {
+    navigate('/');
   };
 
   return (
@@ -45,7 +47,9 @@ const RegisterPage = () => {
           placeholder="Confirm Password"
           required
         />
-        <button type="submit">Register</button>
+
+
+        <button type="submit" onClick={handleHomeRedirect}>Register</button>
 
         <a href="" onClick={handleLoginRedirect} className="register-link">Already registered? Sign In</a>
 
