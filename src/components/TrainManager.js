@@ -3,9 +3,9 @@ import '../admin.css';
 
 const TrainManager = () => {
   const [trains, setTrains] = useState([
-    { id: 1, name: 'Express', route: 'New York - Washington', status: 'Active' },
-    { id: 2, name: 'Eurostar', route: 'London - Paris', status: 'Active' },
-    { id: 3, name: 'Bullet Train', route: 'Tokyo - Osaka', status: 'Inactive' }
+    { id: 1, name: 'TrainTrack', route: 'İzmir - Ankara', status: 'Active' },
+    { id: 2, name: 'TrainTrack', route: 'İstanbul - İzmir', status: 'Active' },
+    { id: 3, name: 'TrainTrack', route: 'Ankara - İstanbul', status: 'Inactive' }
   ]);
 
   const handleToggleTrainStatus = (trainId) => {

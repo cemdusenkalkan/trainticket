@@ -3,9 +3,9 @@ import '../admin.css';
 
 const TicketManager = () => {
   const [tickets, setTickets] = useState([
-    { id: 1, passengerName: 'John Doe', destination: 'New York', status: 'Pending' },
-    { id: 2, passengerName: 'Jane Smith', destination: 'London', status: 'Confirmed' },
-    { id: 3, passengerName: 'Emma Brown', destination: 'Paris', status: 'Pending' }
+    { id: 1, passengerName: 'Miray Köksa', destination: 'İstanbul', status: 'Pending' },
+    { id: 2, passengerName: 'Cem Düşenkalkan', destination: 'Ankara', status: 'Confirmed' },
+    { id: 3, passengerName: 'Meryem Çanga', destination: 'İzmir', status: 'Pending' }
   ]);
 
   const handleCancelTicket = (ticketId) => {

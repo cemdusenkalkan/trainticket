@@ -73,7 +73,7 @@ const HomePage = () => {
           <div className="input-wrapper">
             <input
               type="text"
-              placeholder="From (Istanbul, Izmir, Ankara)"
+              placeholder="From"
               value={fromStation}
               onChange={(e) => {
                 setFromStation(e.target.value);
@@ -94,7 +94,7 @@ const HomePage = () => {
           <div className="input-wrapper">
             <input
               type="text"
-              placeholder="To (Istanbul, Izmir, Ankara)"
+              placeholder="To"
               value={toStation}
               onChange={(e) => {
                 setToStation(e.target.value);
