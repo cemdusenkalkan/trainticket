@@ -325,3 +325,66 @@
      transition: color 0.3s;
    }
    /*.toggleCheckbox:checked + .toggle*/
+
+   .input-wrapper {
+    position: relative;
+    width: 100%;
+  }
+  
+  .suggestions-list {
+    position: absolute;
+    width: calc(100% - 2px); /* Adjust width to fit the container */
+    background: white;
+    border: 1px solid #ccc;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+    z-index: 1000;
+    border-top: none;
+    max-height: 200px; /* Limit height and enable scrolling */
+    overflow-y: auto;
+    overflow-x: hidden;
+    border-radius: 0 0 4px 4px; /* Rounded corners at the bottom */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+  }
+  
+  .suggestion-item {
+    padding: 10px 15px;
+    cursor: pointer;
+    border-bottom: 1px solid #eee;
+    transition: background-color 0.2s;
+  }
+  
+  .suggestion-item:last-child {
+    border-bottom: none;
+  }
+  
+  .suggestion-item:hover {
+    background-color: #f0f0f0; /* Light grey background on hover */
+  }
+  
+  .input-wrapper input:focus + .suggestions-list,
+  .input-wrapper input:not(:focus):hover + .suggestions-list,
+  .suggestions-list:hover {
+    opacity: 1;
+    visibility: visible; /* Show suggestions when input is focused or hovered */
+  }
+  
+  /* Animation for scrolling items into view smoothly */
+  @keyframes slideDown {
+    0% {
+      transform: translateY(-10px);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  
+  .suggestions-list {
+    animation: slideDown 0.3s ease-out forwards; /* Apply animation */
+  }
+  
+
+  
