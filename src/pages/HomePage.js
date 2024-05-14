@@ -14,25 +14,30 @@ const HomePage = () => {
   const [departureDate, setDepartureDate] = useState(null);
   const [returnDate, setReturnDate] = useState(null);
   const [selectedOption, setSelectedOption] = useState('one-way');
-  const cities = ['Istanbul', 'Izmir', 'Ankara'];
-  const navigate = useNavigate();
-
-  // Separate visibility states for each dropdown
   const [showFromSuggestions, setShowFromSuggestions] = useState(false);
   const [showToSuggestions, setShowToSuggestions] = useState(false);
+  
+  const navigate = useNavigate();
+
+  const cities = [
+    { id: 1, name: 'Istanbul'},
+    { id: 2, name: 'Izmir'},
+    { id: 3, name: 'Ankara'},
+    { id: 4, name: 'Antalya'}
+  ];
 
   const handleSearchTickets = () => {
     navigate('/ticket');
   };
 
   const handleCitySelect = (city, setStation, setShowSuggestions) => {
-    setStation(city);
+    setStation(city.name);
     setShowSuggestions(false);  // Hide suggestions after selection
   };
 
   const filteredCities = (input) => {
     if (!input) return [];
-    return cities.filter(city => city.toLowerCase().startsWith(input.toLowerCase()));
+    return cities.filter(city => city.name.toLowerCase().includes(input.toLowerCase()));
   };
 
   return (
@@ -47,6 +52,7 @@ const HomePage = () => {
 
         <h2>traintrack</h2>
         <h3 className='slogan'>Ride the Rails to Adventure - Your Journey Begins Here!</h3>
+
         <div className="search-options">
           <label>
             <input 
@@ -69,6 +75,7 @@ const HomePage = () => {
             Roundtrip
           </label>
         </div>
+
         <div className="search-fields">
           <div className="input-wrapper">
             <input
@@ -80,13 +87,13 @@ const HomePage = () => {
                 setShowFromSuggestions(true);
               }}
               onFocus={() => setShowFromSuggestions(true)}
-              onBlur={() => setTimeout(() => setShowFromSuggestions(false), 100)}
+              onBlur={() => setTimeout(() => setShowFromSuggestions(false), 200)}
               className="station-input"
             />
             {showFromSuggestions && (
               <div className="suggestions-list">
                 {filteredCities(fromStation).map(city => (
-                  <div key={city} onClick={() => handleCitySelect(city, setFromStation, setShowFromSuggestions)} className="suggestion-item">{city}</div>
+                  <div key={city.id} onClick={() => handleCitySelect(city, setFromStation, setShowFromSuggestions)} className="suggestion-item">{city.name}</div>
                 ))}
               </div>
             )}
@@ -101,13 +108,13 @@ const HomePage = () => {
                 setShowToSuggestions(true);
               }}
               onFocus={() => setShowToSuggestions(true)}
-              onBlur={() => setTimeout(() => setShowToSuggestions(false), 100)}
+              onBlur={() => setTimeout(() => setShowToSuggestions(false), 200)}
               className="station-input"
             />
             {showToSuggestions && (
               <div className="suggestions-list">
                 {filteredCities(toStation).map(city => (
-                  <div key={city} onClick={() => handleCitySelect(city, setToStation, setShowToSuggestions)} className="suggestion-item">{city}</div>
+                  <div key={city.id} onClick={() => handleCitySelect(city, setToStation, setShowToSuggestions)} className="suggestion-item">{city.name}</div>
                 ))}
               </div>
             )}
