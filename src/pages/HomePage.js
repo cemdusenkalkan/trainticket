@@ -27,11 +27,18 @@ const HomePage = () => {
   ];
 
   const handleSearchTickets = () => {
-    navigate('/ticket');
+    const params = new URLSearchParams({
+      from: fromStation,
+      to: toStation,
+      departure: departureDate ? departureDate.toISOString() : '',
+      return: selectedOption === 'roundtrip' && returnDate ? returnDate.toISOString() : '',
+      oneWay: selectedOption === 'one-way'
+    });
+    navigate(`/ticket?${params.toString()}`);
   };
 
   const handleCitySelect = (city, setStation, setShowSuggestions) => {
-    setStation(city.name);
+    setStation(city.id);  // Store the city id instead of name
     setShowSuggestions(false);  // Hide suggestions after selection
   };
 
@@ -43,7 +50,7 @@ const HomePage = () => {
 
   const filteredCities = (input, exclude) => {
     if (!input) return [];
-    return cities.filter(city => city.name.toLowerCase().includes(input.toLowerCase()) && city.name !== exclude);
+    return cities.filter(city => city.name.toLowerCase().includes(input.toLowerCase()) && city.id !== exclude);
   };
 
   return (
@@ -87,7 +94,7 @@ const HomePage = () => {
             <input
               type="text"
               placeholder="From"
-              value={fromStation}
+              value={fromStation ? cities.find(city => city.id === fromStation)?.name : ''}
               onChange={(e) => {
                 setFromStation(e.target.value);
                 setShowFromSuggestions(true);
@@ -111,7 +118,7 @@ const HomePage = () => {
             <input
               type="text"
               placeholder="To"
-              value={toStation}
+              value={toStation ? cities.find(city => city.id === toStation)?.name : ''}
               onChange={(e) => {
                 setToStation(e.target.value);
                 setShowToSuggestions(true);
