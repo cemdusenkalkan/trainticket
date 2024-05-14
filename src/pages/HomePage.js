@@ -16,7 +16,7 @@ const HomePage = () => {
   const [selectedOption, setSelectedOption] = useState('one-way');
   const [showFromSuggestions, setShowFromSuggestions] = useState(false);
   const [showToSuggestions, setShowToSuggestions] = useState(false);
-  
+
   const navigate = useNavigate();
 
   const cities = [
@@ -35,9 +35,15 @@ const HomePage = () => {
     setShowSuggestions(false);  // Hide suggestions after selection
   };
 
-  const filteredCities = (input) => {
+  const handleSwapStations = () => {
+    const temp = fromStation;
+    setFromStation(toStation);
+    setToStation(temp);
+  };
+
+  const filteredCities = (input, exclude) => {
     if (!input) return [];
-    return cities.filter(city => city.name.toLowerCase().includes(input.toLowerCase()));
+    return cities.filter(city => city.name.toLowerCase().includes(input.toLowerCase()) && city.name !== exclude);
   };
 
   return (
@@ -92,12 +98,15 @@ const HomePage = () => {
             />
             {showFromSuggestions && (
               <div className="suggestions-list">
-                {filteredCities(fromStation).map(city => (
+                {filteredCities(fromStation, toStation).map(city => (
                   <div key={city.id} onClick={() => handleCitySelect(city, setFromStation, setShowFromSuggestions)} className="suggestion-item">{city.name}</div>
                 ))}
               </div>
             )}
           </div>
+          <button onClick={handleSwapStations} className="swap-button" aria-label="Swap From and To">
+            ⇆
+          </button>
           <div className="input-wrapper">
             <input
               type="text"
@@ -113,7 +122,7 @@ const HomePage = () => {
             />
             {showToSuggestions && (
               <div className="suggestions-list">
-                {filteredCities(toStation).map(city => (
+                {filteredCities(toStation, fromStation).map(city => (
                   <div key={city.id} onClick={() => handleCitySelect(city, setToStation, setShowToSuggestions)} className="suggestion-item">{city.name}</div>
                 ))}
               </div>
