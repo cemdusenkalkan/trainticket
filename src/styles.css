@@ -285,46 +285,7 @@
   /* Additional styles will be needed for responsiveness. */
   
 
-  /*  https://hudecz.medium.com/how-to-create-a-pure-css-toggle-button-2fcc955a8984  */ 
-
-  .toggleContainer {
-     position: relative;
-     display: grid;
-     grid-template-columns: repeat(2, 1fr);
-     width: fit-content;
-     border: 3px solid #343434;
-     border-radius: 20px;
-     background: #343434;
-     font-weight: bold;
-     color: #343434;
-     cursor: pointer;
-   }
-   .toggleContainer::before {
-     content: '';
-     position: absolute;
-     width: 50%;
-     height: 100%;
-     left: 0%;
-     border-radius:20px;
-     background: white;
-     transition: all 0.3s;
-   }
-   .toggleCheckbox:checked + .toggleContainer::before {
-      left: 50%;
-   }
-   .toggleContainer div {
-     padding: 6px;
-     text-align: center;
-     z-index: 1;
-   }
-   .toggleCheckbox {
-     display: none;
-   }
-   .toggleCheckbox:checked + .toggleContainer div:first-child{
-     color: white;
-     transition: color 0.3s;
-   }
-   /*.toggleCheckbox:checked + .toggle*/
+  
 
    .input-wrapper {
     position: relative;
@@ -385,6 +346,75 @@
   .suggestions-list {
     animation: slideDown 0.3s ease-out forwards; /* Apply animation */
   }
-  
 
+  /* switchhh */
+
+  .toggle-switch {
+    position: relative;
+    display: inline-block;
+    width: 120px; /* Width increased for better visibility */
+    height: 40px;
+  }
+  
+  .toggle-switch input[type="checkbox"] {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #2196F3; /* Blue background color */
+    transition: 0.4s;
+    border-radius: 20px;
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 32px;
+    width: 32px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: 0.4s;
+    border-radius: 50%;
+  }
+  
+  input:checked + .slider {
+    background-color: #2196F3; /* Blue background color remains the same */
+  }
+  
+  input:checked + .slider:before {
+    transform: translateX(80px); /* Adjusted according to increased width */
+  }
+  
+  .label-left,
+  .label-right,
+  .label-hidden {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 14px;
+    color: white;
+    font-weight: bold;
+  }
+  
+  .label-left {
+    right: 10px; /* Changed from left to right */
+  }
+  
+  .label-right {
+    left: 10px; /* Changed from right to left */
+  }
+  
+  .label-hidden {
+    display: none;
+  }
+  
   

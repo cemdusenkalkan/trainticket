@@ -20,10 +20,10 @@ const HomePage = () => {
   const navigate = useNavigate();
 
   const cities = [
-    { id: 1, name: 'Istanbul'},
-    { id: 2, name: 'Izmir'},
-    { id: 3, name: 'Ankara'},
-    { id: 4, name: 'Antalya'}
+    { id: 1, name: 'Istanbul' },
+    { id: 2, name: 'Izmir' },
+    { id: 3, name: 'Ankara' },
+    { id: 4, name: 'Antalya' }
   ];
 
   const handleSearchTickets = () => {
@@ -38,8 +38,8 @@ const HomePage = () => {
   };
 
   const handleCitySelect = (city, setStation, setShowSuggestions) => {
-    setStation(city.id);  // Store the city id instead of name
-    setShowSuggestions(false);  // Hide suggestions after selection
+    setStation(city.id); // Store the city id instead of name
+    setShowSuggestions(false); // Hide suggestions after selection
   };
 
   const handleSwapStations = () => {
@@ -61,31 +61,21 @@ const HomePage = () => {
           backgroundImage: `url(${backgroundImage})`,
           backgroundSize: 'cover',
           backgroundRepeat: 'no-repeat'
-        }}>
-
+        }}
+      >
         <h2>traintrack</h2>
-        <h3 className='slogan'>Ride the Rails to Adventure - Your Journey Begins Here!</h3>
+        <h3 className="slogan">Ride the Rails to Adventure - Your Journey Begins Here!</h3>
 
-        <div className="search-options">
-          <label>
-            <input 
-              type="radio" 
-              name="tripType" 
-              value="one-way"
-              checked={selectedOption === 'one-way'}
-              onChange={() => setSelectedOption('one-way')}
-            />
-            One way
-          </label>
-          <label>
-            <input 
-              type="radio" 
-              name="tripType" 
-              value="roundtrip"
-              checked={selectedOption === 'roundtrip'}
-              onChange={() => setSelectedOption('roundtrip')}
-            />
-            Roundtrip
+        <div className="toggle-switch">
+          <input
+            type="checkbox"
+            id="tripType"
+            checked={selectedOption === 'roundtrip'}
+            onChange={() => setSelectedOption(selectedOption === 'one-way' ? 'roundtrip' : 'one-way')}
+          />
+          <label htmlFor="tripType" className="slider">
+            <span className={`label ${selectedOption === 'one-way' ? 'label-left' : 'label-hidden'}`}>One way</span>
+            <span className={`label ${selectedOption === 'roundtrip' ? 'label-right' : 'label-hidden'}`}>Roundtrip</span>
           </label>
         </div>
 
@@ -106,7 +96,9 @@ const HomePage = () => {
             {showFromSuggestions && (
               <div className="suggestions-list">
                 {filteredCities(fromStation, toStation).map(city => (
-                  <div key={city.id} onClick={() => handleCitySelect(city, setFromStation, setShowFromSuggestions)} className="suggestion-item">{city.name}</div>
+                  <div key={city.id} onClick={() => handleCitySelect(city, setFromStation, setShowFromSuggestions)} className="suggestion-item">
+                    {city.name}
+                  </div>
                 ))}
               </div>
             )}
@@ -130,7 +122,9 @@ const HomePage = () => {
             {showToSuggestions && (
               <div className="suggestions-list">
                 {filteredCities(toStation, fromStation).map(city => (
-                  <div key={city.id} onClick={() => handleCitySelect(city, setToStation, setShowToSuggestions)} className="suggestion-item">{city.name}</div>
+                  <div key={city.id} onClick={() => handleCitySelect(city, setToStation, setShowToSuggestions)} className="suggestion-item">
+                    {city.name}
+                  </div>
                 ))}
               </div>
             )}

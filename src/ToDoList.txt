@@ -1,1 +1,16 @@
-<h1> Öncelikler <h1>
+<h1> Tamamlanmış Kısımlar <h1>
+    -> To ve From arasında değiştirmek
+    -> To'da seçilenin From'da gözükmemesi
+    -> Seçimlere göre arama sonucu göstermek
+
+
+<h1> Yapılacaklar <h1>
+    -> Biri eşşek gibi yorumları silecek
+    -> Arkaplan görselini ayarla (krıp/ değiş/ bişiler yap işte)
+    -> Logo'ya tıklandığında home sayfasına aktar
+    -> Ticket Inquey düzenlenecek
+        * nereden nereye / saati / iptal etme butonu / sayfayı büyüt yani güzelleştir
+    -> Admindshboard'u düzenle
+    -> Droupdown'u düzenle
+    -> One way butonunu düzenle
+    -> 
