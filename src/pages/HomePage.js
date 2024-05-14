@@ -135,6 +135,7 @@ const HomePage = () => {
             onChange={(date) => setDepartureDate(date)}
             placeholderText="Departure Date"
             className="date-picker"
+            minDate={new Date()}
           />
 
           {selectedOption === 'roundtrip' && (
@@ -143,6 +144,7 @@ const HomePage = () => {
               onChange={(date) => setReturnDate(date)}
               placeholderText="Return Date"
               className="date-picker"
+              minDate={departureDate || new Date()}
             />
           )}
 
