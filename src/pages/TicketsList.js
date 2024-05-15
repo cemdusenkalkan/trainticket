@@ -94,14 +94,43 @@ const TicketsList = () => {
     navigate(`/payment`);
   };
 
+  const handleStepClick = (step) => {
+    if (step === 1) {
+      navigate(``);
+    }
+  };
+
+
   return (
     <div className="container">
+
+
+
+      <div className="row">
+        <div className="col-12 mb-4">
+            <div className="progress-steps">
+              <span onClick={() => handleStepClick(1)} className="active-step">1. Select train</span>
+              <span className="arrow">→</span>
+              <span className="disabled-step">2. Select seats</span>
+              <span className="arrow">→</span>
+              <span className="disabled-step">3. Passengers</span>
+              <span className="arrow">→</span>
+              <span className="disabled-step">4. Reservation</span>
+            </div>
+        </div>
+      </div>
+
+
       <div className="row">
         <div className="col-12">
             <h5 className="journey-info">{cities[from]} → {cities[to]} {selectedDate.toLocaleDateString('en-US', { day: 'numeric', month: 'short' })}</h5>
             <DateSelector selectedDate={selectedDate} setSelectedDate={setSelectedDate} />
         </div>
       </div>
+
+     
+
+
       <div className="row">
         <div className="col-md-3">
           <div className="border p-3">
