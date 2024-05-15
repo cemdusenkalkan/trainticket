@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, NavLink } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Navbar, Nav, Container, Button} from 'react-bootstrap';
+import { Navbar, Nav, Container, Dropdown } from 'react-bootstrap';
 import './App.css';
 import HomePage from './pages/HomePage';
 import LoginPage from './pages/LoginPage';
@@ -21,12 +21,27 @@ import logoImage from './img/logo.png';
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [user, setUser] = useState(null);
 
-  const handleLogin = (credentials) => {
-    setIsLoggedIn(true);
+  useEffect(() => {
+    const storedUser = localStorage.getItem('user');
+    if (storedUser) {
+      setUser(JSON.parse(storedUser));
+      setIsLoggedIn(true);
+    }
+  }, []);
+
+  const handleLogin = () => {
+    const storedUser = localStorage.getItem('user');
+    if (storedUser) {
+      setUser(JSON.parse(storedUser));
+      setIsLoggedIn(true);
+    }
   };
 
   const handleLogout = () => {
+    localStorage.removeItem('user');
+    setUser(null);
     setIsLoggedIn(false);
   };
 
@@ -46,7 +61,15 @@ const App = () => {
                   <Nav.Link as={NavLink} to="/contact" className="navbar-link" activeClassName="active">Contact</Nav.Link>
                   <Nav.Link as={NavLink} to="/ticket-inquiry" className="navbar-link" activeClassName="active">Ticket Inquiry</Nav.Link>
                   {isLoggedIn ? (
-                    <Button onClick={handleLogout} className="login-button">Logout</Button>
+                    <Dropdown align="end">
+                      <Dropdown.Toggle variant="light" id="dropdown-basic" className="navbar-link">
+                        {user?.name}
+                      </Dropdown.Toggle>
+
+                      <Dropdown.Menu>
+                        <Dropdown.Item onClick={handleLogout}>Logout</Dropdown.Item>
+                      </Dropdown.Menu>
+                    </Dropdown>
                   ) : (
                     <Nav.Link as={NavLink} to="/login" className="navbar-link login-button" activeClassName="active">Login</Nav.Link>
                   )}
@@ -73,8 +96,7 @@ const App = () => {
         </main>
       </div>
 
-      <Footer/>
-
+      <Footer />
     </Router>
   );
 };

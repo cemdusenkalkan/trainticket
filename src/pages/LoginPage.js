@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import '../LoginPage.css'; // Make sure to create this CSS file
 import { useNavigate } from 'react-router-dom'; // If you're using react-router
 
-const LoginPage = () => {
+const LoginPage = ({ onLogin }) => {
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -21,6 +21,8 @@ const LoginPage = () => {
 
     if (user) {
       console.log('Logging in with', email, 'Role:', user.role);
+      localStorage.setItem('user', JSON.stringify(user));
+      onLogin();
       if (user.role === 'admin') {
         navigate('/admin-dashboard');
       } else {
@@ -31,7 +33,8 @@ const LoginPage = () => {
     }
   };
 
-  const handleRegisterRedirect = () => {
+  const handleRegisterRedirect = (e) => {
+    e.preventDefault();
     navigate('/register');
   };
 
@@ -57,11 +60,8 @@ const LoginPage = () => {
         />
         <button type="submit">Login</button>
 
-        <a href="" onClick={handleRegisterRedirect} className="register-link">Don't have an account yet?  Sign Up</a>
-
-        
+        <a href="" onClick={handleRegisterRedirect} className="register-link">Don't have an account yet? Sign Up</a>
       </form>
-      
     </div>
   );
 };
