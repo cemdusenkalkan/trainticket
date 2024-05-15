@@ -41,7 +41,7 @@ const App = () => {
               </Navbar.Brand>
               <Navbar.Toggle aria-controls="basic-navbar-nav" />
               <Navbar.Collapse id="basic-navbar-nav">
-                <Nav className="me-auto">
+                <Nav className="ms-auto">
                   <Nav.Link as={NavLink} to="/" className="nav-link" activeClassName="active">Home</Nav.Link>
                   <Nav.Link as={NavLink} to="/contact" className="nav-link" activeClassName="active">Contact</Nav.Link>
                   <Nav.Link as={NavLink} to="/ticket-inquiry" className="nav-link" activeClassName="active">Ticket Inquiry</Nav.Link>
