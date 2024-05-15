@@ -17,3 +17,14 @@
     -> About TrainTrack ksımına etkileyici süper yazılar yazmak 
     -> linkedin hesaplarımızı eklemek
     -> iğrenç bi footer ekledim o düzenlenecek
+    -> admin bir şey silerken onay pop-up'ı
+    -> admin admin ekleyebilsin
+    -> takvimdeki butonları değiştirmek
+    -> bilet adımları eklenecek - koltuk seçme falan.
+    -> footer'a menünün aynısını taşı.
+    -> ticketların listelendiği sayfada önceki / sonraki güne geçiş
+    -> mainpage de arama yaparken kişi sayısı 
+    -> kullanıcıya özel sayfalar:
+        * profil düzenleme
+        * biletlerimi görüntüleme (geçmiş / aktif - > iptal talebi)
+

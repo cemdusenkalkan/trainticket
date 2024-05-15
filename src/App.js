@@ -17,12 +17,15 @@ import AdminPanelPage from './pages/AdminPanelPage';
 import ChatSupport from './components/ChatSupport';
 import Footer from './components/Footer';
 
+
+
 import logoImage from './img/logo.png';
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [user, setUser] = useState(null);
 
+ 
   useEffect(() => {
     const storedUser = localStorage.getItem('user');
     if (storedUser) {
@@ -49,7 +52,7 @@ const App = () => {
     <Router>
       <div className="App">
         <header>
-          <Navbar bg="light" expand="lg" className="navbar-links">
+          <Navbar expand="lg" className="navbar-links">
             <Container>
               <Navbar.Brand href="/">
                 <img src={logoImage} className="logo" alt="logo" />
