@@ -66,3 +66,41 @@
 .nav-link:focus, .nav-link.active, .nav-link:hover {
   border-bottom: 1px solid #444;
 }
+
+
+/****************************** FOOTER ******************************/
+
+footer {
+  margin-top: auto;
+  padding: 2rem 0;
+  background-color: #343a40;
+  color: white;
+}
+
+footer h5 {
+  margin-bottom: 1rem;
+}
+
+footer p, footer ul {
+  margin-bottom: 1rem;
+}
+
+footer .bg-secondary {
+  background-color: #6c757d !important;
+}
+
+footer .linkedin-button {
+  display: flex;
+  align-items: center;
+  /* justify-content: center; */
+  margin: 6px;
+  background-color: #ffffff;
+  border: none;
+  color: #0077b5;
+}
+
+footer .linkedin-icon {
+  width: 20px;
+  height: 20px;
+  margin-right: 15px;
+}
