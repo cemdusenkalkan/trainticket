@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, NavLink } from 'react-router-dom';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Navbar, Nav, Container, Button } from 'react-bootstrap';
 import './App.css';
-import './styles.css';
+//import './styles.css';
 import HomePage from './pages/HomePage';
 import LoginPage from './pages/LoginPage';
 import ContactPage from './pages/ContactPage';
@@ -32,17 +34,26 @@ const App = () => {
     <Router>
       <div className="App">
         <header>
-          <nav className="nav-links">
-            <img src={logoImage} alt="logo" />
-            <NavLink to="/" className="custom-button" activeClassName="active">Home</NavLink>
-            <NavLink to="/contact" className="custom-button" activeClassName="active">Contact</NavLink>
-            <NavLink to="/ticket-inquiry" className="custom-button" activeClassName="active">Ticket Inquiry</NavLink>
-            {isLoggedIn ? (
-              <button onClick={handleLogout} className="login-button">Logout</button>
-            ) : (
-              <NavLink to="/login" className="login-button" activeClassName="active">Login</NavLink>
-            )}
-          </nav>
+          <Navbar bg="light" expand="lg" className="nav-links">
+            <Container>
+              <Navbar.Brand href="/">
+                <img src={logoImage} className="logo" alt="logo"  />
+              </Navbar.Brand>
+              <Navbar.Toggle aria-controls="basic-navbar-nav" />
+              <Navbar.Collapse id="basic-navbar-nav">
+                <Nav className="me-auto">
+                  <Nav.Link as={NavLink} to="/" className="nav-link" activeClassName="active">Home</Nav.Link>
+                  <Nav.Link as={NavLink} to="/contact" className="nav-link" activeClassName="active">Contact</Nav.Link>
+                  <Nav.Link as={NavLink} to="/ticket-inquiry" className="nav-link" activeClassName="active">Ticket Inquiry</Nav.Link>
+                  {isLoggedIn ? (
+                    <Button onClick={handleLogout} className="login-button">Logout</Button>
+                  ) : (
+                    <Nav.Link as={NavLink} to="/login" className="nav-link login-button" activeClassName="active">Login</Nav.Link>
+                  )}
+                </Nav>
+              </Navbar.Collapse>
+            </Container>
+          </Navbar>
         </header>
         <main>
           <Routes>
@@ -58,7 +69,7 @@ const App = () => {
             <Route path="/admin-dashboard" element={<AdminPanelPage />} />
             <Route path="/SelectSeatPage" element={<SelectSeatPage />} />
           </Routes>
-          <ChatSupport /> {}
+          <ChatSupport />
         </main>
       </div>
     </Router>
