@@ -1,110 +1,108 @@
-.form-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-    background: #f5f5f5;
-    padding: 50px 0;
-  }
-  
-  .form-container h1 {
-    font-size: 2.5em;
-    margin-bottom: 0.5em;
-  }
-  
-  .form {
-    background: #ffffff;
-    box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.1);
-    padding: 40px;
-    border-radius: 8px;
-    max-width: 500px;
-    width: 100%;
-    box-sizing: border-box;
-    animation: fadeInUp 0.5s ease-in-out;
-  }
-  
-  .form input {
-    width: 100%;
-    padding: 15px;
-    margin-bottom: 15px;
-    border-radius: 4px;
-    border: 1px solid #ddd;
-    transition: box-shadow 0.3s ease-in-out;
-  }
-  
-  .form input:focus {
-    outline: none;
-    box-shadow: 0px 0px 8px rgba(46, 134, 222, 0.5);
-  }
-  
-  .form button {
-    padding: 15px;
-    width: 100%;
-    background-color: #2e86de;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .form button:hover {
-    background-color: #1b5e9e;
-  }
-  
-  .register-redirect {
-    margin-top: 20px;
-    background-color: #f8f9fa;
-    box-shadow: 1px 1px 1px 1px #888888;
-    color: #333;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .register-redirect:hover {
-    background-color: #ddd;
-  }
-  
-  /* Same keyframes as before */
-  @keyframes fadeInUp {
-    from {
-      transform: translateY(20px);
-      opacity: 0;
-    }
-    to {
-      transform: translateY(0);
-      opacity: 1;
-    }
-  }
-  
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  box-sizing: border-box;
+}
 
-    /* Hata mesajı için stil */
-    .error-message {
-      color: #D8000C; /* Kırmızı tonu, hata mesajları için genellikle kullanılan bir renktir */
-      background-color: #FFD2D2; /* Açık kırmızı arkaplan */
-      border: 1px solid #D8000C;
-      padding: 10px;
-      margin-bottom: 10px; /* Formun üzerindeki boşluğu ayarlar */
-      text-align: center; /* Metni ortalar */
-      border-radius: 5px; /* Kenarları yuvarlatır */
-      font-size: 0.9em; /* Yazı tipi boyutunu ayarlar */
-    }
+.login-page {
+  background: url('./img/loginBackgroung.jpg') no-repeat center center fixed;
+  background-size: cover;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* Flex start to align items from the start */
+  padding-top: 60px; /* Add padding to the top */
+}
 
+.login-container {
+  margin-top: 80px;
+  background: rgba(255, 255, 255, 0.85); /* Daha şeffaf beyaz arka plan */
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  max-width: 400px;
+  width: 100%;
+}
 
+.login-container h1 {
+  margin-bottom: 20px;
+  color: #333;
+}
 
-    .register-link {
-      color: #007bff; /* Link rengi */
-      text-decoration: none; /* Alt çizgiyi kaldır */
-      margin-top: 15px; /* Üstten boşluk */
-      display: block; /* Yeni satıra başlaması için */
-      cursor: pointer; /* Fare imleci link şeklinde olsun */
-    }
-    
-    .register-link:hover {
-      text-decoration: underline; /* Üzerine gelindiğinde altını çiz */
-    }
-    
+.login-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.input-group {
+  margin-bottom: 20px;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.9); /* Input arka plan rengini biraz daha opak yaptık */
+  transition: border-color 0.3s ease;
+}
+
+.input-group input:focus {
+  border-color: #2e86de;
+  outline: none;
+}
+
+button {
+  padding: 10px;
+  background-color: #2e86de;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #1b5e9e;
+}
+
+.register-link-container {
+  margin-top: 15px;
+}
+
+.register-link {
+  color: #2e86de;
+  text-decoration: none;
+}
+
+.register-link:hover {
+  text-decoration: underline;
+}
+
+.error-message {
+  color: #D8000C;
+  background-color: #FFD2D2;
+  border: 1px solid #D8000C;
+  padding: 10px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+}
+
+@keyframes fadeInUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import '../LoginPage.css'; // Make sure to create this CSS file
-import { useNavigate } from 'react-router-dom'; // If you're using react-router
+import { useNavigate } from 'react-router-dom';
+import '../LoginPage.css';
 
 const LoginPage = ({ onLogin }) => {
   const navigate = useNavigate();
@@ -39,29 +39,37 @@ const LoginPage = ({ onLogin }) => {
   };
 
   return (
-    <div className="form-container">
-      <h1>Login</h1>
-      <form className="form" onSubmit={handleLoginSubmit}>
+    <div className="login-page">
+      <div className="login-container">
+        <h1>Login</h1>
         {error && <div className="error-message">{error}</div>}
-
-        <input
-          type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          placeholder="Email Address"
-          required
-        />
-        <input
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          placeholder="Password"
-          required
-        />
-        <button type="submit">Login</button>
-
-        <a href="" onClick={handleRegisterRedirect} className="register-link">Don't have an account yet? Sign Up</a>
-      </form>
+        <form className="login-form" onSubmit={handleLoginSubmit}>
+          <div className="input-group">
+            <label htmlFor="email">Email Address</label>
+            <input
+              type="email"
+              id="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+          </div>
+          <div className="input-group">
+            <label htmlFor="password">Password</label>
+            <input
+              type="password"
+              id="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+          </div>
+          <button type="submit">Login</button>
+        </form>
+        <div className="register-link-container">
+          <a href="" onClick={handleRegisterRedirect} className="register-link">Don't have an account yet? Sign Up</a>
+        </div>
+      </div>
     </div>
   );
 };
