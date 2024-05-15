@@ -26,10 +26,6 @@ const DateSelector = ({ selectedDate, setSelectedDate }) => {
     navigate(`${window.location.pathname}?${params.toString()}`, { replace: true });
   };
 
-  const handleModifySearch = () => {
-    navigate('/');
-  };
-
   return (
     <div className="date-selector">
       <button
@@ -55,10 +51,7 @@ const DateSelector = ({ selectedDate, setSelectedDate }) => {
             <MdOutlineDateRange />
           </button>
         }
-      /> 
-      {/* 
-      <button onClick={handleModifySearch}>Modify search</button>
-      */ }
+      />
     </div>
   );
 };
@@ -69,26 +62,83 @@ const TicketsList = () => {
   const { from, to, departure } = queryString.parse(location.search);
 
   const [tickets, setTickets] = useState([
-    { id: 1, from: 'İzmir', fromId: 2, to: 'İstanbul', toId: 1, departure: '08:00', arrival: '10:00' },
-    { id: 2, from: 'İstanbul', fromId: 1, to: 'İzmir', toId: 2, departure: '09:00', arrival: '10:30' },
-    { id: 3, from: 'İzmir', fromId: 2, to: 'Ankara', toId: 3, departure: '09:30', arrival: '10:45' },
-    { id: 4, from: 'Ankara', fromId: 3, to: 'İzmir', toId: 2, departure: '10:00', arrival: '11:00' },
-    { id: 5, from: 'İstanbul', fromId: 1, to: 'Ankara', toId: 3, departure: '09:30', arrival: '10:45' },
-    { id: 6, from: 'Ankara', fromId: 3, to: 'İstanbul', toId: 1, departure: '10:00', arrival: '11:00' },
+    { id: 1, from: 'Izmir', fromId: 2, to: 'Istanbul', toId: 1, departure: '08:00', arrival: '10:00', transfer: false, price: 100 },
+    { id: 2, from: 'Istanbul', fromId: 1, to: 'Izmir', toId: 2, departure: '09:00', arrival: '10:30', transfer: true, price: 150 },
+    { id: 3, from: 'Izmir', fromId: 2, to: 'Ankara', toId: 3, departure: '09:30', arrival: '10:45', transfer: false, price: 120 },
+    { id: 4, from: 'Ankara', fromId: 3, to: 'Izmir', toId: 2, departure: '10:00', arrival: '11:00', transfer: true, price: 140 },
+    { id: 5, from: 'Istanbul', fromId: 1, to: 'Ankara', toId: 3, departure: '09:30', arrival: '10:45', transfer: false, price: 130 },
+    { id: 6, from: 'Ankara', fromId: 3, to: 'Istanbul', toId: 1, departure: '10:00', arrival: '11:00', transfer: true, price: 160 },
+    { id: 7, from: 'Izmir', fromId: 2, to: 'Antalya', toId: 4, departure: '07:00', arrival: '09:00', transfer: false, price: 110 },
+    { id: 8, from: 'Antalya', fromId: 4, to: 'Izmir', toId: 2, departure: '08:00', arrival: '10:30', transfer: true, price: 155 },
+    { id: 9, from: 'Istanbul', fromId: 1, to: 'Antalya', toId: 4, departure: '07:30', arrival: '09:45', transfer: false, price: 140 },
+    { id: 10, from: 'Antalya', fromId: 4, to: 'Istanbul', toId: 1, departure: '09:00', arrival: '11:30', transfer: true, price: 170 },
+    { id: 11, from: 'Ankara', fromId: 3, to: 'Antalya', toId: 4, departure: '08:30', arrival: '10:30', transfer: false, price: 125 },
+    { id: 12, from: 'Antalya', fromId: 4, to: 'Ankara', toId: 3, departure: '10:00', arrival: '12:30', transfer: true, price: 165 },
+    { id: 13, from: 'Istanbul', fromId: 1, to: 'Ankara', toId: 3, departure: '12:00', arrival: '14:00', transfer: false, price: 135 },
+    { id: 14, from: 'Ankara', fromId: 3, to: 'Istanbul', toId: 1, departure: '14:00', arrival: '16:00', transfer: true, price: 175 },
+    { id: 15, from: 'Izmir', fromId: 2, to: 'Antalya', toId: 4, departure: '11:00', arrival: '13:00', transfer: false, price: 115 },
+    { id: 16, from: 'Antalya', fromId: 4, to: 'Izmir', toId: 2, departure: '13:00', arrival: '15:30', transfer: true, price: 150 },
   ]);
 
   const [selectedDate, setSelectedDate] = useState(new Date(departure));
+  const [filters, setFilters] = useState({
+    transfer: { withTransfer: true, withoutTransfer: true },
+    arrivalTimes: ['night', 'morning', 'afternoon', 'evening'],
+    departureTimes: ['night', 'morning', 'afternoon', 'evening']
+  });
 
   const cities = {
-    1: 'İstanbul',
-    2: 'İzmir',
+    1: 'Istanbul',
+    2: 'Izmir',
     3: 'Ankara',
     4: 'Antalya'
   };
 
-  const filteredTickets = tickets.filter(ticket => {
+  const handleFilterChange = (filterName, value) => {
+    setFilters(prevFilters => ({
+      ...prevFilters,
+      transfer: {
+        ...prevFilters.transfer,
+        [filterName]: value
+      }
+    }));
+  };
+
+  const handleSelectBoxChange = (filterName, value) => {
+    setFilters(prevFilters => {
+      const updatedArray = prevFilters[filterName].includes(value)
+        ? prevFilters[filterName].filter(item => item !== value)
+        : [...prevFilters[filterName], value];
+      return { ...prevFilters, [filterName]: updatedArray };
+    });
+  };
+
+  const getTimeRange = (time) => {
+    const [hour] = time.split(':').map(Number);
+    if (hour >= 0 && hour < 6) return 'night';
+    if (hour >= 6 && hour < 12) return 'morning';
+    if (hour >= 12 && hour < 17) return 'afternoon';
+    return 'evening';
+  };
+
+  const filterTickets = (tickets) => {
+    return tickets.filter(ticket => {
+      const { transfer, arrivalTimes, departureTimes } = filters;
+
+      const transferMatch = transfer.withTransfer && transfer.withoutTransfer ? true :
+                            transfer.withTransfer ? ticket.transfer :
+                            transfer.withoutTransfer ? !ticket.transfer : false;
+
+      const arrivalMatch = arrivalTimes.length > 0 && arrivalTimes.includes(getTimeRange(ticket.arrival));
+      const departureMatch = departureTimes.length > 0 && departureTimes.includes(getTimeRange(ticket.departure));
+
+      return transferMatch && arrivalMatch && departureMatch;
+    });
+  };
+
+  const filteredTickets = filterTickets(tickets.filter(ticket => {
     return ticket.fromId === Number(from) && ticket.toId === Number(to);
-  });
+  }));
 
   const handleBuyClick = id => {
     navigate(`/payment`);
@@ -100,64 +150,93 @@ const TicketsList = () => {
     }
   };
 
-
   return (
     <div className="container">
-
-
-
       <div className="row">
         <div className="col-12 mb-4">
-            <div className="progress-steps">
-              <span onClick={() => handleStepClick(1)} className="active-step">1. Select train</span>
-              <span className="arrow">→</span>
-              <span className="disabled-step">2. Select seats</span>
-              <span className="arrow">→</span>
-              <span className="disabled-step">3. Passengers</span>
-              <span className="arrow">→</span>
-              <span className="disabled-step">4. Reservation</span>
-            </div>
+          <div className="progress-steps">
+            <span onClick={() => handleStepClick(1)} className="active-step">1. Select Train</span>
+            <span className="arrow">→</span>
+            <span className="disabled-step">2. Select Seats</span>
+            <span className="arrow">→</span>
+            <span className="disabled-step">3. Passengers</span>
+            <span className="arrow">→</span>
+            <span className="disabled-step">4. Reservation</span>
+          </div>
         </div>
       </div>
-
-
       <div className="row">
         <div className="col-12">
-            <h5 className="journey-info">{cities[from]} → {cities[to]} {selectedDate.toLocaleDateString('en-US', { day: 'numeric', month: 'short' })}</h5>
-            <DateSelector selectedDate={selectedDate} setSelectedDate={setSelectedDate} />
+          <h5 className="journey-info">{cities[from]} → {cities[to]} {selectedDate.toLocaleDateString('en-US', { day: 'numeric', month: 'short' })}</h5>
+          <DateSelector selectedDate={selectedDate} setSelectedDate={setSelectedDate} />
         </div>
       </div>
-
-     
-
-
       <div className="row">
         <div className="col-md-3">
-          <div className="border p-3">
-            <h5>Filter</h5>
-            <p>Grid: 3</p>
+          <div className="filter-container">
+            <div className="filter-section">
+              <label>
+                <input
+                  type="checkbox"
+                  onChange={(e) => handleFilterChange('withTransfer', e.target.checked)}
+                  checked={filters.transfer.withTransfer}
+                /> With Transfer
+              </label>
+              <label>
+                <input
+                  type="checkbox"
+                  onChange={(e) => handleFilterChange('withoutTransfer', e.target.checked)}
+                  checked={filters.transfer.withoutTransfer}
+                /> Without Transfer
+              </label>
+            </div>
+            <div className="filter-section">
+              <h6>Arrival Time</h6>
+              {['night', 'morning', 'afternoon', 'evening'].map((time) => (
+                <label key={time}>
+                  <input
+                    type="checkbox"
+                    onChange={() => handleSelectBoxChange('arrivalTimes', time)}
+                    checked={filters.arrivalTimes.includes(time)}
+                  /> {time.charAt(0).toUpperCase() + time.slice(1)}
+                </label>
+              ))}
+            </div>
+            <div className="filter-section">
+              <h6>Departure Time</h6>
+              {['night', 'morning', 'afternoon', 'evening'].map((time) => (
+                <label key={time}>
+                  <input
+                    type="checkbox"
+                    onChange={() => handleSelectBoxChange('departureTimes', time)}
+                    checked={filters.departureTimes.includes(time)}
+                  /> {time.charAt(0).toUpperCase() + time.slice(1)}
+                </label>
+              ))}
+            </div>
           </div>
         </div>
         <div className="col-md-9">
-            <div className="tickets-container">
-              {filteredTickets.length > 0 ? (
-                filteredTickets.map(ticket => (
-                  <div key={ticket.id} className="ticket mb-3">
-                    <div className="ticket-detail"><strong>Departure Point:</strong> <span>{ticket.from}</span></div>
-                    <div className="ticket-detail"><strong>Destination:</strong> <span>{ticket.to}</span></div>
-                    <div className="ticket-detail"><strong>Departure Time:</strong> <span>{ticket.departure}</span></div>
-                    <div className="ticket-detail"><strong>Arrival Time:</strong> <span>{ticket.arrival}</span></div>
-                    <button className="btn btn-primary mt-2" onClick={() => handleBuyClick(ticket.id)}>Buy</button>
-                  </div>
-                ))
-              ) : (
-                <p>No tickets available for the selected route.</p>
-              )}
-            </div>
+          <div className="tickets-container">
+            {filteredTickets.length > 0 ? (
+              filteredTickets.map(ticket => (
+                <div key={ticket.id} className="ticket mb-3">
+                  <div className="ticket-detail"><strong>Departure Point:</strong> <span>{ticket.from}</span></div>
+                  <div className="ticket-detail"><strong>Destination:</strong> <span>{ticket.to}</span></div>
+                  <div className="ticket-detail"><strong>Departure Time:</strong> <span>{ticket.departure}</span></div>
+                  <div className="ticket-detail"><strong>Arrival Time:</strong> <span>{ticket.arrival}</span></div>
+                  <div className="ticket-detail"><strong>Transfer:</strong> <span>{ticket.transfer ? 'Yes' : 'No'}</span></div>
+                  <div className="ticket-detail"><strong>Price:</strong> <span>${ticket.price}</span></div>
+                  <button className="btn btn-primary mt-2" onClick={() => handleBuyClick(ticket.id)}>Buy</button>
+                </div>
+              ))
+            ) : (
+              <p>No tickets available for the selected route.</p>
+            )}
           </div>
         </div>
       </div>
-
+    </div>
   );
 };
 

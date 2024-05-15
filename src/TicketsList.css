@@ -1,4 +1,4 @@
-
+/* Existing Styles */
 
 .progress-steps {
   display: flex;
@@ -38,7 +38,6 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
-  padding: 20px;
   max-width: 800px;
   margin: auto;
 }
@@ -81,21 +80,6 @@ button:hover {
   border-radius: 8px;
 }
 
-button {
-  padding: 10px 20px;
-  font-size: 14px;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-button:hover {
-  background-color: #0056b3;
-}
-
 .ticket-detail {
   margin-bottom: 10px;
 }
@@ -108,9 +92,7 @@ button:hover {
   display: block;
 }
 
-/* Yeni Eklenen Stiller */
-
-
+/* New Styles */
 
 .date-selector {
   display: flex;
@@ -126,8 +108,8 @@ button:hover {
   cursor: pointer;
   font-size: 16px;
   transition: color 0.3s;
-  color: #666; /* Soluk siyah (gri) */
-  font-weight: normal; /* Normal yazı */
+  color: #666; /* Light black (gray) */
+  font-weight: normal; /* Normal text */
 }
 
 .date-selector button:hover {
@@ -135,7 +117,7 @@ button:hover {
 }
 
 .date-selector button.active {
-  color: #000000; /* Siyah renk */
+  color: #000000; /* Black color */
 }
 
 .date-selector button.disabled {
@@ -148,7 +130,7 @@ button:hover {
   border: none;
   cursor: pointer;
   font-size: 20px;
-  color: #666; /* Soluk siyah (gri) */
+  color: #666; /* Light black (gray) */
 }
 
 .date-selector .calendar-button:hover {
@@ -157,7 +139,7 @@ button:hover {
 
 .date-selector .react-datepicker-wrapper {
   display: inline-block;
-  width: auto; /* Butonun genişliğine göre ayarla */
+  width: auto; /* Adjust according to button width */
 }
 
 .date-selector .react-datepicker__input-container input {
@@ -167,8 +149,8 @@ button:hover {
   border-radius: 5px;
   background-color: transparent;
   cursor: pointer;
-  color: #666; /* Soluk siyah (gri) */
-  display: none; /* Giriş alanını gizle */
+  color: #666; /* Light black (gray) */
+  display: none; /* Hide input field */
 }
 
 .date-selector .react-datepicker__input-container input:focus {
@@ -176,24 +158,63 @@ button:hover {
 }
 
 .date-selector .react-datepicker {
-  color: #666; /* Takvim metin rengi */
+  color: #666; /* Calendar text color */
 }
 
 .date-selector .react-datepicker__current-month,
 .date-selector .react-datepicker__day,
 .date-selector .react-datepicker__day-name,
 .date-selector .react-datepicker__day--selected {
-  color: #666; /* Takvim gün rengi */
+  color: #666; /* Calendar day color */
 }
 
 .date-selector .react-datepicker__day--keyboard-selected {
-  background-color: #666; /* Seçilen gün arkaplan rengi */
+  background-color: #666; /* Selected day background color */
 }
 
 .journey-info {
   font-size: 18px;
-  font-weight: normal; /* Normal yazı */
-  color: #666; /* Soluk siyah (gri) */
+  font-weight: normal; /* Normal text */
+  color: #666; /* Light black (gray) */
   margin-bottom: 20px;
   text-align: center;
 }
+
+/* Filter Styles */
+
+.filter-container {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  background-color: #f9f9f9;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.filter-section {
+  margin-bottom: 20px;
+  text-align: left; /* Align text to the left */
+}
+
+.filter-section h6 {
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.filter-section label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 14px;
+  color: #666;
+  cursor: pointer;
+}
+
+.filter-section input[type="checkbox"] {
+  margin-right: 10px;
+}
+
+.filter-section input[type="checkbox"]:checked {
+  accent-color: #007bff;
+}
+
