@@ -5,6 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { MdOutlineDateRange } from 'react-icons/md';
+import { IoPersonSharp } from "react-icons/io5";
 import '../TicketsList.css';
 
 const DateSelector = ({ selectedDate, setSelectedDate }) => {
@@ -19,6 +20,9 @@ const DateSelector = ({ selectedDate, setSelectedDate }) => {
     setSelectedDate(date);
     updateUrlDate(date);
   };
+
+
+
 
   const updateUrlDate = (date) => {
     const params = new URLSearchParams(window.location.search);
@@ -59,7 +63,7 @@ const DateSelector = ({ selectedDate, setSelectedDate }) => {
 const TicketsList = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const { from, to, departure } = queryString.parse(location.search);
+  const { from, to, departure, oneWay, passengers } = queryString.parse(location.search);
 
   const [tickets, setTickets] = useState([
     { id: 1, from: 'Izmir', fromId: 2, to: 'Istanbul', toId: 1, departure: '08:00', arrival: '10:00', transfer: false, price: 100 },
@@ -86,6 +90,27 @@ const TicketsList = () => {
     arrivalTimes: ['night', 'morning', 'afternoon', 'evening'],
     departureTimes: ['night', 'morning', 'afternoon', 'evening']
   });
+
+  const [passengerCount, setPassengerCount] = useState(Number(passengers));
+
+  useEffect(() => {
+    setPassengerCount(Number(passengers));
+  }, [passengers]);
+
+
+  const handlePassengerCountChange = (e) => {
+    const count = e.target.value;
+    setPassengerCount(count);
+    updateUrlPassengerCount(count);
+  };
+
+  const updateUrlPassengerCount = (count) => {
+    const params = new URLSearchParams(window.location.search);
+    params.set('passengers', count);
+    navigate(`${window.location.pathname}?${params.toString()}`, { replace: true });
+  };
+
+
 
   const cities = {
     1: 'Istanbul',
@@ -126,8 +151,8 @@ const TicketsList = () => {
       const { transfer, arrivalTimes, departureTimes } = filters;
 
       const transferMatch = transfer.withTransfer && transfer.withoutTransfer ? true :
-                            transfer.withTransfer ? ticket.transfer :
-                            transfer.withoutTransfer ? !ticket.transfer : false;
+        transfer.withTransfer ? ticket.transfer :
+          transfer.withoutTransfer ? !ticket.transfer : false;
 
       const arrivalMatch = arrivalTimes.length > 0 && arrivalTimes.includes(getTimeRange(ticket.arrival));
       const departureMatch = departureTimes.length > 0 && departureTimes.includes(getTimeRange(ticket.departure));
@@ -141,7 +166,7 @@ const TicketsList = () => {
   }));
 
   const handleBuyClick = id => {
-    navigate(`/payment`);
+    navigate(`/SelectSeatPage`);
   };
 
   const handleStepClick = (step) => {
@@ -167,8 +192,31 @@ const TicketsList = () => {
       </div>
       <div className="row">
         <div className="col-12">
-          <h5 className="journey-info">{cities[from]} → {cities[to]} {selectedDate.toLocaleDateString('en-US', { day: 'numeric', month: 'short' })}</h5>
+          <h5 className="journey-info me-5">{cities[from]} → {cities[to]} {selectedDate.toLocaleDateString('en-US', { day: 'numeric', month: 'short' })}</h5>
+
+          <div className="passenger-selector ">
+            <div className="icon-container">
+              <IoPersonSharp className="person-icon" />
+            </div>
+            <select
+              id="passengerCount"
+              value={passengerCount}
+              onChange={handlePassengerCountChange}
+              className="passenger-select"
+            >
+              {[...Array(10).keys()].map(i => (
+                <option key={i + 1} value={i + 1}>
+                  {i + 1}
+                </option>
+              ))}
+            </select>
+
+          </div>
+
           <DateSelector selectedDate={selectedDate} setSelectedDate={setSelectedDate} />
+
+
+
         </div>
       </div>
       <div className="row">

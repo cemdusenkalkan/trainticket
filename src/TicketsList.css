@@ -30,7 +30,7 @@
   border-radius: 8px;
   padding: 20px;
   background-color: #f9f9f9;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   gap: 20px;
 }
 
@@ -43,10 +43,10 @@
 }
 
 .ticket div {
-  margin-bottom: 5px; 
+  margin-bottom: 5px;
   font-size: 16px;
   color: #333;
-  flex: 1; 
+  flex: 1;
 }
 
 button {
@@ -108,8 +108,10 @@ button:hover {
   cursor: pointer;
   font-size: 16px;
   transition: color 0.3s;
-  color: #666; /* Light black (gray) */
-  font-weight: normal; /* Normal text */
+  color: #666;
+  /* Light black (gray) */
+  font-weight: normal;
+  /* Normal text */
 }
 
 .date-selector button:hover {
@@ -117,7 +119,8 @@ button:hover {
 }
 
 .date-selector button.active {
-  color: #000000; /* Black color */
+  color: #000000;
+  /* Black color */
 }
 
 .date-selector button.disabled {
@@ -130,7 +133,8 @@ button:hover {
   border: none;
   cursor: pointer;
   font-size: 20px;
-  color: #666; /* Light black (gray) */
+  color: #666;
+  /* Light black (gray) */
 }
 
 .date-selector .calendar-button:hover {
@@ -139,7 +143,8 @@ button:hover {
 
 .date-selector .react-datepicker-wrapper {
   display: inline-block;
-  width: auto; /* Adjust according to button width */
+  width: auto;
+  /* Adjust according to button width */
 }
 
 .date-selector .react-datepicker__input-container input {
@@ -149,8 +154,10 @@ button:hover {
   border-radius: 5px;
   background-color: transparent;
   cursor: pointer;
-  color: #666; /* Light black (gray) */
-  display: none; /* Hide input field */
+  color: #666;
+  /* Light black (gray) */
+  display: none;
+  /* Hide input field */
 }
 
 .date-selector .react-datepicker__input-container input:focus {
@@ -158,24 +165,29 @@ button:hover {
 }
 
 .date-selector .react-datepicker {
-  color: #666; /* Calendar text color */
+  color: #666;
+  /* Calendar text color */
 }
 
 .date-selector .react-datepicker__current-month,
 .date-selector .react-datepicker__day,
 .date-selector .react-datepicker__day-name,
 .date-selector .react-datepicker__day--selected {
-  color: #666; /* Calendar day color */
+  color: #666;
+  /* Calendar day color */
 }
 
 .date-selector .react-datepicker__day--keyboard-selected {
-  background-color: #666; /* Selected day background color */
+  background-color: #666;
+  /* Selected day background color */
 }
 
 .journey-info {
   font-size: 18px;
-  font-weight: normal; /* Normal text */
-  color: #666; /* Light black (gray) */
+  font-weight: normal;
+  /* Normal text */
+  color: #666;
+  /* Light black (gray) */
   margin-bottom: 20px;
   text-align: center;
 }
@@ -187,12 +199,13 @@ button:hover {
   border-radius: 8px;
   padding: 20px;
   background-color: #f9f9f9;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .filter-section {
   margin-bottom: 20px;
-  text-align: left; /* Align text to the left */
+  text-align: left;
+  /* Align text to the left */
 }
 
 .filter-section h6 {
@@ -218,3 +231,34 @@ button:hover {
   accent-color: #007bff;
 }
 
+
+/* passanger selector */
+.passenger-selector {
+  display: flex;
+  align-items: center;
+  border: 1px solid #000;
+  /* Dış çerçeve */
+  width: fit-content;
+}
+
+.icon-container {
+  padding: 0 10px;
+  border-right: 1px solid #000;
+  /* İkon ve select kutusunu ayıran çizgi */
+}
+
+.passenger-select {
+  padding: 5px 10px;
+  border: none;
+  /* Seçim kutusunun sınırını kaldır */
+  outline: none;
+  appearance: none;
+  /* Default ok işaretini kaldırmak için */
+  background: none;
+  font-size: 16px;
+}
+
+.passenger-select option {
+  background: #fff;
+  color: #000;
+}

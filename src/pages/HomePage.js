@@ -7,6 +7,8 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useNavigate } from 'react-router-dom';
+import { IoPersonSharp } from "react-icons/io5";
+
 
 const HomePage = () => {
   const [fromStation, setFromStation] = useState('');
@@ -26,13 +28,17 @@ const HomePage = () => {
     { id: 4, name: 'Antalya' }
   ];
 
+  const [passengerCount, setPassengerCount] = useState(1);
+
+
   const handleSearchTickets = () => {
     const params = new URLSearchParams({
       from: fromStation,
       to: toStation,
       departure: departureDate ? departureDate.toISOString() : '',
       return: selectedOption === 'roundtrip' && returnDate ? returnDate.toISOString() : '',
-      oneWay: selectedOption === 'one-way'
+      oneWay: selectedOption === 'one-way',
+      passengers: passengerCount
     });
     navigate(`/ticket?${params.toString()}`);
   };
@@ -128,6 +134,24 @@ const HomePage = () => {
                 ))}
               </div>
             )}
+          </div>
+
+          <div className="passenger-selector ">
+            <div className="icon-container">
+              <IoPersonSharp className="person-icon" />
+            </div>
+            <select
+              id="passengerCount"
+              value={passengerCount}
+              onChange={(e) => setPassengerCount(e.target.value)}
+              className="passenger-select"
+            >
+              {[...Array(10).keys()].map(i => (
+                <option key={i + 1} value={i + 1}>
+                  {i + 1}
+                </option>
+              ))}
+            </select>
           </div>
 
           <DatePicker
