@@ -166,7 +166,17 @@ const TicketsList = () => {
   }));
 
   const handleBuyClick = id => {
-    navigate(`/SelectSeatPage`);
+    const selectedTicket = tickets.find(ticket => ticket.id === id);
+    const params = new URLSearchParams();
+    params.append('ticketId', selectedTicket.id);
+    params.append('from', from);
+    params.append('to', to);
+    params.append('departure', departure);
+    params.append('oneWay', oneWay);
+    params.append('passengers', passengers);
+
+    const queryString = params.toString();
+    navigate(`/SelectSeatPage?${queryString}`);
   };
 
   const handleStepClick = (step) => {
