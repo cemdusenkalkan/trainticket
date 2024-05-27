@@ -10,13 +10,19 @@ const initialUsers = [
 
 const AdminUserManagement = () => {
   const [users, setUsers] = useState(initialUsers);
+  const [showModal, setShowModal] = useState(false);
+  const [userToDelete, setUserToDelete] = useState(null);
 
-  // Geçici olarak kullancı silmek için
-  const handleDeleteUser = (userId) => {
-    setUsers(users.filter(user => user.id !== userId));
+  const handleDeleteUser = () => {
+    setUsers(users.filter(user => user.id !== userToDelete));
+    setShowModal(false);
   };
 
-  
+  const handleShowModal = (userId) => {
+    setUserToDelete(userId);
+    setShowModal(true);
+  };
+
   return (
     <div className="user-management">
       <h2>User Management</h2>
@@ -38,12 +44,28 @@ const AdminUserManagement = () => {
               <td>{user.email}</td>
               <td>{user.role}</td>
               <td>
-                <button onClick={() => handleDeleteUser(user.id)}>Delete</button>
+                <button onClick={() => handleShowModal(user.id)}>Delete</button>
               </td>
             </tr>
           ))}
         </tbody>
       </table>
+      {showModal && (
+        <div className="modal show">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h2 className="modal-title">Confirmation</h2>
+            </div>
+            <div className="modal-body">
+              <p>Are you sure you want to delete this user?</p>
+            </div>
+            <div className="modal-footer">
+              <button onClick={() => setShowModal(false)}>Cancel</button>
+              <button onClick={handleDeleteUser}>Delete</button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
