@@ -5,10 +5,17 @@ import '../TrainSearchPage.css';
 function TrainSearchPage() {
   const [ticketNumber, setTicketNumber] = useState('');
   const [lastName, setLastName] = useState('');
+  const [error, setError] = useState('');
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (!ticketNumber || !lastName) {
+      setError('Please fill in all fields.');
+      return;
+    }
+    setError('');
+
     // This is where you'd call the onSearch if you have any API to fetch data from.
     // Simulating a random ticket for now.
     const randomTicket = {
@@ -23,6 +30,7 @@ function TrainSearchPage() {
     <div className="search-container">
       <h2>Ticket Inquiry</h2>
       <form onSubmit={handleSubmit} className="search-form">
+        {error && <div className="error-message">{error}</div>}
         <div>
           <label htmlFor="ticketNumber">Ticket Number:</label>
           <input 
