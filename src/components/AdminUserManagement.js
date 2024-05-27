@@ -12,6 +12,7 @@ const AdminUserManagement = () => {
   const [users, setUsers] = useState(initialUsers);
   const [showModal, setShowModal] = useState(false);
   const [userToDelete, setUserToDelete] = useState(null);
+  const [newAdmin, setNewAdmin] = useState({ name: '', email: '' });
 
   const handleDeleteUser = () => {
     setUsers(users.filter(user => user.id !== userToDelete));
@@ -21,6 +22,18 @@ const AdminUserManagement = () => {
   const handleShowModal = (userId) => {
     setUserToDelete(userId);
     setShowModal(true);
+  };
+
+  const handleAddAdmin = (e) => {
+    e.preventDefault();
+    const newAdminUser = {
+      id: users.length + 1,
+      name: newAdmin.name,
+      email: newAdmin.email,
+      role: 'admin'
+    };
+    setUsers([...users, newAdminUser]);
+    setNewAdmin({ name: '', email: '' });
   };
 
   return (
@@ -66,6 +79,28 @@ const AdminUserManagement = () => {
           </div>
         </div>
       )}
+      <h2>Add New Admin</h2>
+      <form onSubmit={handleAddAdmin} className="add-admin-form">
+        <div className="form-group">
+          <label>Name:</label>
+          <input
+            type="text"
+            value={newAdmin.name}
+            onChange={(e) => setNewAdmin({ ...newAdmin, name: e.target.value })}
+            required
+          />
+        </div>
+        <div className="form-group">
+          <label>Email:</label>
+          <input
+            type="email"
+            value={newAdmin.email}
+            onChange={(e) => setNewAdmin({ ...newAdmin, email: e.target.value })}
+            required
+          />
+        </div>
+        <button type="submit" className="add-admin-button">Add Admin</button>
+      </form>
     </div>
   );
 };

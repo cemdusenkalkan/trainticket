@@ -119,6 +119,47 @@ button:hover {
   background-color: #218838;
 }
 
+.add-admin-form {
+  background-color: #fff;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+}
+
+.add-admin-form .form-group {
+  margin-bottom: 15px;
+}
+
+.add-admin-form .form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.add-admin-form .form-group input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.add-admin-button {
+  background-color: #28a745;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.add-admin-button:hover {
+  background-color: #218838;
+  transform: translateY(-2px);
+}
+
 /* Fade in animation */
 @keyframes fadeIn {
   from {
